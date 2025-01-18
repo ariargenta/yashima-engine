@@ -474,154 +474,115 @@ Each asset system includes:
 - [Memory Optimization](../tutorials/memory-optimization.md)
 
 ### 2.3 Performance Targets
-The Yashima Engine's performance targets are established based on comprehensive analysis of hardware accessibility, educational value, and development sustainability. Our architectural decisions prioritize widespread adoption while maintaining educational clarity.
+#### 2.3.1 Architecture Specifications
+##### 2.3.1.1 CPU Architecture
+| Feature | Specification | Impact |
+|---------|--------------|---------|
+| ISA | x86_64 | Base architecture |
+| Cache Line | 64 bytes | Memory alignment |
+| SIMD | SSE4.2/AVX2 | Vector operations |
+| Pipeline | Out-of-order | Instruction scheduling |
+| Memory Model | x86 Strong | Memory ordering |
 
-#### 2.3.1 Architectural Decision Record
-##### 2.3.1.1 Platform Selection Rationale
+##### 2.3.1.2 GPU Architecture
+| Feature | Specification | Impact |
+|---------|--------------|---------|
+| Architecture | x86 PCIe | Bus interface |
+| Memory Type | VRAM/Shared | Resource allocation |
+| Cache Hierarchy | L1/L2 | Data locality |
+| Compute Model | SIMD/SIMT | Parallel execution |
+
+#### 2.3.2 Performance Metrics
+##### 2.3.2.1 CPU Performance
 ```mermaid
 graph TD
-    A[Platform Requirements] --> B[Hardware Accessibility]
-    A --> C[Educational Value]
-    A --> D[Development Sustainability]
-    B --> E[DirectX 11 + IGP]
-    C --> F[Visible Pipeline]
-    D --> G[Future Scalability]
+    A[CPU Load] --> B[Cache Utilization]
+    B --> C[Memory Bandwidth]
+    C --> D[Instruction Throughput]
+    
+    E[x86 Features] -.->|Optimize| B
+    E -.->|Optimize| C
+    E -.->|Optimize| D
 ```
 
-**Key Decision Factors**:
-| Factor | Weight | Justification |
-|--------|--------|---------------|
-| Hardware Availability | Critical | Most students have access to integrated graphics |
-| API Maturity | High | DX11 offers stable drivers and wide support |
-| Development Tools | High | Robust debugging and profiling tools available |
-| Learning Curve | Medium | Balanced complexity for educational purposes |
+| Metric | Target | Architecture Consideration |
+|--------|--------|----------------------------|
+| Cache Miss Rate | <5% | x86 cache line alignment |
+| Branch Misprediction | <1% | x86 branch prediction |
+| IPC | >2.0 | Instruction scheduling |
+| Memory Bandwidth | <80% | Memory controller limits |
 
-##### 2.3.1.2 Base Performance Targets
-**Frame Budget Distribution**:
+##### 2.3.2.2 Resource Allocation
+| Resource | Budget | Architecture Impact |
+|----------|--------|---------------------|
+| L1 Cache | 32KB | Per-core x86 cache |
+| L2 Cache | 256KB | Shared cache |
+| L3 Cache | 6MB | LLC management |
+| Main Memory | 8GB | Virtual memory system |
+
+#### 2.3.3 Optimization Targets
+##### 2.3.3.1 x86 Specific Optimizations
+- Cache line alignment
+- SIMD instruction utilization
+- Branch prediction optimization
+- Memory ordering considerations
+- Page alignment
+
+##### 2.3.3.2 Memory Access Patterns
 ```mermaid
 graph LR
-    A[33.33ms Total] --> B[CPU: 11ms]
-    A --> C[GPU: 22ms]
-    B --> D[Scene: 5ms]
-    B --> E[Logic: 6ms]
-    C --> F[Geometry: 8ms]
-    C --> G[Pixels: 10ms]
-    C --> H[Post: 4ms]
+    A[Memory Request] --> B{Cache Check}
+    B -->|Hit| C[L1 Cache]
+    B -->|Miss| D[L2 Cache]
+    D -->|Miss| E[L3 Cache]
+    E -->|Miss| F[Main Memory]
 ```
 
-#### 2.3.2 Hardware Tier Specifications
-##### 2.3.2.1 Educational Baseline (Primary Focus)
-**Target Hardware**:
-- GPU: Intel UHD 620 or equivalent integrated graphics
-- CPU: Intel i3 8th Gen / AMD Ryzen 3 2200G
-- RAM: 8GB System Memory
-- API: DirectX 11
+#### 2.3.4 System Integration
+##### 2.3.4.1 CPU-GPU Communication
+| Operation | Latency Target | Bandwidth Target |
+|-----------|----------------|------------------|
+| PCIe Transfer | <10μs | 16 GB/s |
+| Memory Mapping | <1ms | System RAM speed |
+| DMA Operations | <100μs | Direct path |
 
-**Performance Targets**:
-- Resolution: 720p-1080p
-- Frame Rate: 30 FPS stable
-- Memory Usage: ≤ 2GB total
-- Shader Model: 5.0
+##### 2.3.4.2 Architecture Constraints
+- x86 memory ordering rules
+- Cache coherency protocols
+- NUMA considerations
+- PCIe topology
 
-**Justification**:
-- Most widely available hardware configuration
-- Supports fundamental graphics concepts
-- Adequate for learning pipeline basics
-- Minimal barrier to entry
+#### 2.3.5 Performance Monitoring
+##### 2.3.5.1 Hardware Counters
+| Counter | Purpose | Architecture Feature |
+|---------|---------|----------------------|
+| Cache Misses | Memory efficiency | x86 PMU |
+| Branch Misses | Flow efficiency | x86 PMU |
+| SIMD Usage | Vector efficiency | x86 PMU |
+| Memory Bandwidth | Transfer rates | System bus |
 
-##### 2.3.2.2 Mainstream Development
-**Target Hardware**:
-- GPU: GTX 1650 / RX 580 / Intel Arc A380
-- CPU: Intel i5 10th Gen / Ryzen 5 3600
-- RAM: 16GB System Memory
-- API: DirectX 11 with Vulkan capability
-
-**Performance Targets**:
-- Resolution: 1080p
-- Frame Rate: 60 FPS
-- Memory Usage: ≤ 4GB total
-- Advanced shader features
-
-##### 2.3.2.3 Extended Capabilities
-**Target Hardware**:
-- GPU: RTX 2060 / RX 5600 XT / Intel Arc A750
-- CPU: Intel i7 11th Gen / Ryzen 7 3700X
-- RAM: 16GB+ System Memory
-- API: DirectX 11 + Vulkan
-
-**Performance Targets**:
-- Resolution: 1440p
-- Frame Rate: 60+ FPS
-- Memory Usage: ≤ 8GB total
-- Full feature set
-
-#### 2.3.3 Software Compensation Strategies
-##### 2.3.3.1 Memory Management
+##### 2.3.5.2 Critical Paths
 ```mermaid
 graph TD
-    A[Resource Management] --> B[Streaming]
-    A --> C[Pooling]
-    A --> D[Compression]
-    B --> E[Dynamic Loading]
-    C --> F[Memory Reuse]
-    D --> G[Asset Optimization]
+    A[Instruction Fetch] --> B[Decode]
+    B --> C[Execute]
+    C --> D[Memory Access]
+    D --> E[Write Back]
+    
+    F[x86 Features] -.->|Optimize| A
+    F -.->|Optimize| B
+    F -.->|Optimize| C
+    F -.->|Optimize| D
 ```
 
-**Implementation Priority**:
-| Feature | Priority | Educational Value | Performance Impact |
-|---------|----------|-------------------|--------------------|
-| Texture Streaming | Critical | High | Significant |
-| Resource Pooling | High | Medium | High |
-| Asset Compression | Medium | Low | Medium |
-
-#### 2.3.3.2 Performance Scaling
-**Dynamic Feature Set**:
-- Shader complexity levels
-- LOD system
-- Resolution scaling
-- Effect quality tiers
-
-**Educational Integration**:
-- Performance profiling tools
-- Pipeline visualization
-- Resource monitoring
-- Debug overlays
-
-#### 2.3.4 Measurement and Validation
-##### 2.3.4.1 Performance Metrics
-| Metric | Target | Minimum | Measurement Method |
-|--------|--------|---------|--------------------|
-| Frame Time | 33.33ms | 40ms | Built-in profiler |
-| Memory Use | 2GB | 1GB | Resource tracker |
-| Load Time | 5s | 10s | Asset loading monitor |
-| Draw Calls | 1000 | 500 | Pipeline statistics |
-
-##### 2.3.4.2 Educational Metrics
-| Aspect | Measurement | Tool |
-|--------|-------------|------|
-| Pipeline Understanding | Stage visualization | Debug overlay |
-| Resource Management | Memory tracking | Resource viewer |
-| Performance Analysis | Frame timing | Performance HUD |
-| Feature Learning | Tutorial completion | Progress tracker |
-
-#### 2.3.5 Development Guidelines
-##### 2.3.5.1 Implementation Priorities
-1. Core rendering functionality
-2. Resource management system
-3. Performance optimization tools
-4. Educational features
-5. Advanced capabilities
-
-##### 2.3.5.2 Documentation Requirements
-- Architecture decisions
-- Performance implications
-- Educational content
-- Optimization guides
-
-#### 2.3.6 References
-- [Performance Optimization Guide](../tutorials/optimization.md)
-- [Hardware Compatibility Matrix](../specs/hardware-compatibility.md)
-- [Educational Feature Set](../docs/educational-features.md)
+#### 2.3.6 Power Management
+##### 2.3.6.1 Power States
+| State | Power Usage | Response Time |
+|-------|-------------|---------------|
+| C0 (Active) | 100% | Immediate |
+| C1 (Halt) | 80% | <1μs |
+| C2 (Stop-Clock) | 60% | <10μs |
+| C3 (Sleep) | 40% | <100μs |
 
 ## 3. Technical Architecture
 ### 3.1 Layer System
