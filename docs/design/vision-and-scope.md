@@ -1368,15 +1368,114 @@ graph LR
 - Distribution system
 
 ## 8. Documentation
-### 8.1 Technical Documentation
-- Architecture Documentation
-- API Documentation
-- Performance Guidelines
+#### 8.1 Documentation Types and Purposes
+##### 8.1.1 Architecture Documentation
+| Type | Purpose | Audience | Update Frequency |
+|------|---------|----------|------------------|
+| System Design | Core architecture decisions | Developers/Architects | Major versions |
+| ADRs | Decision tracking | Development team | Per major decision |
+| Component Diagrams | System visualization | All stakeholders | As architecture evolves |
 
-### 8.2 Developer Resources
-- Setup Guides
-- Best Practices
-- Coding Standards
+##### 8.1.2 API Documentation
+```mermaid
+graph TD
+    A[Source Code] --> B[API Docs]
+    B --> C[Reference]
+    B --> D[Examples]
+    B --> E[Tutorials]
+```
+
+### 8.2 Living Documentation
+#### 8.2.1 Code as Documentation
+- Inline documentation standards
+- Self-documenting code practices
+- Documentation generation rules
+- Version control integration
+
+#### 8.2.2 Documentation Testing
+- API consistency validation
+- Example code verification
+- Link checking
+- Version synchronization
+
+### 8.3 Educational Documentation
+#### 8.3.1 Learning Paths
+```mermaid
+graph LR
+    A[Concepts] --> B[Basic Usage]
+    B --> C[Advanced Topics]
+    C --> D[Optimization]
+```
+
+#### 8.3.2 Interactive Examples
+| Component | Documentation Type | Interactive Element |
+|-----------|--------------------|---------------------|
+| Renderer | Live demos | Real-time visualization |
+| ML Control | State viewer | Decision monitoring |
+| Performance | Profiler | Real-time metrics |
+
+### 8.4 Technical Documentation
+#### 8.4.1 Performance Documentation
+- System requirements
+- Performance metrics
+- Optimization guidelines
+- Benchmark results
+
+#### 8.4.2 Integration Documentation
+```mermaid
+graph TD
+    A[Requirements] --> B[Setup]
+    B --> C[Integration]
+    C --> D[Validation]
+    D --> E[Troubleshooting]
+```
+
+### 8.5 Documentation Infrastructure
+#### 8.5.1 Documentation as Code
+- Source control management
+- Automated generation
+- Continuous integration
+- Deployment automation
+
+#### 8.5.2 Version Control
+| Element | Version Strategy | Update Trigger |
+|---------|------------------|----------------|
+| API Docs | Semantic version | Code changes |
+| Tutorials | Major versions | Feature additions |
+| Examples | Continuous | Implementation changes |
+
+### 8.6 Quality Assurance
+#### 8.6.1 Documentation Testing
+- Link validation
+- Code example testing
+- API consistency checks
+- Performance claim validation
+
+#### 8.6.2 Documentation Reviews
+```mermaid
+graph TD
+    A[Doc Change] --> B[Technical Review]
+    B --> C[Educational Review]
+    C --> D[User Testing]
+    D --> E[Integration]
+```
+
+### 8.7 Maintenance Strategy
+#### 8.7.1 Update Triggers
+| Component | Trigger | Validation Required |
+|-----------|---------|---------------------|
+| API Docs | Code changes | Automatic |
+| Architecture | Design changes | Peer review |
+| Tutorials | Feature changes | User testing |
+| Examples | Implementation changes | Integration tests |
+
+#### 8.7.2 Deprecation Process
+```mermaid
+graph LR
+    A[Mark Deprecated] --> B[Notice Period]
+    B --> C[Alternative Doc]
+    C --> D[Remove]
+```
 
 ## Appendices
 ### A. Technical Glossary
