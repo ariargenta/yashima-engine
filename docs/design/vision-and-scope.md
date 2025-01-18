@@ -855,22 +855,209 @@ graph LR
 - Draw distance
 
 ### 4.2 Performance Budgets
-| System | Budget | Measurement |
-|--------|--------|-------------|
-| Frame Time | [x]ms | Performance Profiler |
-| Memory | [x]MB | Memory Profiler |
+## 4.2 Performance Budgets
+#### 4.2.1 Frame Budget Distribution
+##### 4.2.1.1 Target Frame Times
+| Phase | OpenGL (ms) | DirectX 11 (ms) | Budget % |
+|-------|------------|-----------------|-----------|
+| CPU Preparation | 5.5 | 5.5 | 16.5% |
+| Draw Call Submission | 4.0 | 3.5 | 12.0% |
+| GPU Rendering | 20.0 | 20.0 | 60.0% |
+| Present/Sync | 3.5 | 4.0 | 11.5% |
+| **Total** | **33.33** | **33.33** | **100%** |
+
+##### 4.2.1.2 GPU Timeline
+- Vertex Processing: 7.0ms
+- Fragment Processing: 9.0ms
+- Texture Sampling: 2.5ms
+- Post-Processing: 1.5ms
+
+#### 4.2.2 Memory Allocation
+##### 4.2.2.1 Runtime Memory Budget
+| Resource Type | Size (MB) | Priority |
+|--------------|-----------|-----------|
+| Textures | 512 | High |
+| Meshes | 256 | High |
+| Shaders | 64 | Critical |
+| Buffers | 128 | High |
+| ML Model | 1 | Critical |
+| System | 64 | Medium |
+| **Total** | **1024** | - |
+
+##### 4.2.2.2 Resource Limits
+- Maximum Texture Size: 2048x2048
+- Maximum Vertex Count: 100,000 per frame
+- Maximum Draw Calls: 1,000 per frame
+- Maximum Shader Instructions: 512
+
+#### 4.2.3 Bandwidth Constraints
+##### 4.2.3.1 Memory Bandwidth
+| Operation | Budget (GB/s) | Notes |
+|-----------|--------------|-------|
+| Texture Reads | 8.0 | Including mipmaps |
+| Vertex Fetch | 4.0 | Including cache |
+| Buffer Updates | 2.0 | Dynamic resources |
+| ML Operations | 0.5 | Control decisions |
+| **Total** | **14.5** | Per frame |
+
+##### 4.2.3.2 PCIe Bandwidth
+- Host to Device: 2GB/s
+- Device to Host: 1GB/s
+- Resource Streaming: 500MB/s
+
+#### 4.2.4 CPU Utilization
+##### 4.2.4.1 Thread Budget
+| Thread Type | Usage % | Priority |
+|-------------|---------|-----------|
+| Main Thread | 30% | Critical |
+| Render Thread | 40% | Critical |
+| Resource Thread | 15% | High |
+| ML Thread | 5% | Medium |
+| Worker Threads | 10% | Medium |
+
+##### 4.2.4.2 Core Distribution
+- Main/Render: Dedicated core
+- Resources: Shared core
+- ML/Workers: Shared core
+- System: Remaining cores
+
+#### 4.2.5 Power Budget
+##### 4.2.5.1 Mobile/Integrated
+| Component | Power Target (W) |
+|-----------|-----------------|
+| GPU Processing | 10-15 |
+| CPU Usage | 5-8 |
+| Memory | 2-3 |
+| System | 2-4 |
+| **Total** | **19-30** |
+
+##### 4.2.5.2 Desktop/Dedicated
+| Component | Power Target (W) |
+|-----------|-----------------|
+| GPU Processing | 75-100 |
+| CPU Usage | 25-35 |
+| Memory | 10-15 |
+| System | 15-20 |
+| **Total** | **125-170** |
+
+#### 4.2.6 Monitoring and Control
+##### 4.2.6.1 Performance Metrics
+- Frame Time: 33.33ms target
+- Frame Rate Stability: ±5%
+- Memory Usage: <90% allocation
+- Temperature: <85°C GPU/CPU
+
+##### 4.2.6.2 Control Actions
+- Dynamic resolution scaling
+- LOD adjustment
+- Texture quality reduction
+- Draw distance modification
+- ML control frequency adaptation
 
 ## 5. Development Roadmap
-### 5.1 Technical Milestones
-1. Core Architecture Setup
-2. Basic Render Pipeline
-3. Advanced Features Integration
-4. Optimization Phase
+#### 5.1 Development Phases
+##### 5.1.1 Foundation Phase (Q1)
+- Purpose: Establish core architecture and basic systems
+- Focus: Infrastructure and critical paths
+- Deliverables:
+  - Basic OpenGL rendering pipeline
+  - Resource management system
+  - Memory allocation framework
+  - Core debugging tools
 
-### 5.2 Development Phases
-| Phase | Duration | Deliverables |
-|-------|----------|--------------|
-| [Phase] | [Time] | [Deliverables] |
+##### 5.1.2 Critical Systems Phase (Q2)
+- Purpose: Implement essential rendering features
+- Focus: Basic rendering capabilities
+- Deliverables:
+  - Forward rendering pipeline
+  - Basic shader system
+  - Texture management
+  - Simple geometry pipeline
+
+##### 5.1.3 ML Integration Phase (Q2-Q3)
+- Purpose: Implement resource control system
+- Focus: Performance optimization
+- Deliverables:
+  - ML control system
+  - Resource monitoring
+  - Performance metrics
+  - Feedback loops
+
+##### 5.1.4 API Expansion Phase (Q3-Q4)
+- Purpose: DirectX 11 implementation
+- Focus: API abstraction
+- Deliverables:
+  - DirectX 11 backend
+  - API abstraction layer
+  - Platform-specific optimizations
+  - Cross-API validation
+
+#### 5.2 Development Dependencies
+```mermaid
+graph TD
+    A[Core Architecture] --> B[Resource Management]
+    B --> C[Rendering Pipeline]
+    C --> D[ML Integration]
+    B --> E[API Abstraction]
+    E --> F[DirectX Implementation]
+    
+    G[Debug System] --> B
+    G --> C
+    G --> D
+```
+
+#### 5.3 Risk Management
+##### 5.3.1 Technical Risks
+| Risk | Impact | Probability | Mitigation |
+| Performance Issues | High | Medium | Early | profiling and benchmarking |
+| API Compatibility | High | Medium | Robust abstraction | layer |
+| ML Integration | Medium | High | Phased implementation |
+| Resource Leaks | High | Low | Comprehensive testing |
+
+5.3.2 Development Risks
+Risk	Impact	Probability	Mitigation
+Scope Creep	High	High	Clear phase boundaries
+Technical Debt	Medium	High	Regular refactoring
+Integration Issues	High	Medium	Continuous integration
+Documentation Gaps	Medium	Medium	Documentation as code
+5.4 Quality Gates
+5.4.1 Phase Transition Criteria
+Unit test coverage ≥ 80%
+No critical bugs
+Performance metrics met
+Documentation complete
+Code review approved
+5.4.2 Quality Metrics
+Performance targets achieved
+Memory leaks addressed
+API compliance verified
+Educational value validated
+5.5 Educational Integration
+5.5.1 Documentation Requirements
+Architecture documentation
+Implementation guides
+Performance analysis
+Debug procedures
+Educational examples
+5.5.2 Learning Milestones
+Basic rendering concepts
+Resource management principles
+Performance optimization
+API abstractions
+ML integration
+5.6 Development Workflow
+5.6.1 Sprint Structure
+2-week sprints
+Daily stand-ups
+Sprint planning
+Retrospectives
+Documentation reviews
+5.6.2 Development Practices
+Test-driven development
+Continuous integration
+Code review requirements
+Documentation updates
+Performance monitoring
 
 ## 6. Technical Risks & Mitigations
 ### 6.1 Performance Risks
