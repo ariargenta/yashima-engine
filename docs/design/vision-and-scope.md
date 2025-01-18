@@ -475,22 +475,108 @@ Each asset system includes:
 
 ### 2.3 Performance Targets
 #### 2.3.1 Architecture Specifications
-##### 2.3.1.1 CPU Architecture
-| Feature | Specification | Impact |
-|---------|--------------|---------|
-| ISA | x86_64 | Base architecture |
-| Cache Line | 64 bytes | Memory alignment |
-| SIMD | SSE4.2/AVX2 | Vector operations |
-| Pipeline | Out-of-order | Instruction scheduling |
-| Memory Model | x86 Strong | Memory ordering |
+##### 2.3.1.1 Graphics Pipeline Fundamentals
+```mermaid
+graph LR
+    A[CPU Processing] -->|Buffer| B[Command Queue]
+    B -->|Submit| C[GPU Processing]
+    C -->|Present| D[Display]
+```
 
-##### 2.3.1.2 GPU Architecture
-| Feature | Specification | Impact |
-|---------|--------------|---------|
-| Architecture | x86 PCIe | Bus interface |
-| Memory Type | VRAM/Shared | Resource allocation |
-| Cache Hierarchy | L1/L2 | Data locality |
-| Compute Model | SIMD/SIMT | Parallel execution |
+| Operation | Target | Consideration |
+|-----------|--------|---------------|
+| Buffer Management | <1ms | Universal concept |
+| Command Submission | <0.5ms | Common across APIs |
+| Synchronization | <1ms | Platform agnostic |
+| Memory Transfers | Optimized | Common pattern |
+
+##### 2.3.1.2 Universal Performance Patterns
+- Double/Triple buffering
+- Command batching
+- Resource pooling
+- State sorting
+- Draw call optimization
+
+#### 2.3.2 Architecture-Specific Optimizations
+##### 2.3.2.1 Implementation Matrix
+| Concept | x86 | ARM | Others |
+|---------|-----|-----|--------|
+| Memory Alignment | 64 bytes | 32/64 bytes | Variable |
+| SIMD Operations | AVX/SSE | NEON | Platform specific |
+| Cache Management | x86 specific | ARM specific | Architecture dependent |
+| Thread Model | x86 threads | ARM big.LITTLE | Platform defined |
+
+##### 2.3.2.2 Abstraction Layers
+```mermaid
+graph TD
+    subgraph "Platform Independent"
+        A[Graphics Concepts] --> B[Resource Management]
+        B --> C[Pipeline Control]
+    end
+    
+    subgraph "Platform Specific"
+        D[Memory Management] --> E[Hardware Optimization]
+        E --> F[Performance Tuning]
+    end
+    
+    C -.->|Implementation| D
+```
+
+#### 2.3.3 Performance Metrics
+##### 2.3.3.1 Universal Metrics
+| Metric | Target | Platform Independence |
+|--------|--------|-----------------------|
+| Frame Time | 33.33ms | Universal |
+| Draw Calls | <1000/frame | Universal |
+| Buffer Updates | <100/frame | Universal |
+| State Changes | <50/frame | Universal |
+
+#### 2.3.3.2 Platform-Specific Metrics
+| Metric | Implementation | Abstraction |
+|--------|----------------|-------------|
+| Memory Access | Platform optimized | Common interface |
+| Compute Units | Architecture specific | Standard usage |
+| Thread Scheduling | OS dependent | Abstract model |
+| Power States | Hardware specific | Common states |
+
+#### 2.3.4 Resource Management
+##### 2.3.4.1 Common Patterns
+```mermaid
+graph TD
+    A[Resource Request] --> B[Pool Check]
+    B --> C[Allocation]
+    C --> D[Usage]
+    D --> E[Return to Pool]
+```
+
+##### 2.3.4.2 Platform Adaptation
+| Resource | Common Pattern | Platform Specific |
+|----------|----------------|-------------------|
+| Memory | Pool management | Alignment/Allocation |
+| Compute | Work submission | Hardware scheduling |
+| Synchronization | Event system | OS primitives |
+| Threading | Task system | Thread mapping |
+
+#### 2.3.5 Optimization Strategy
+##### 2.3.5.1 Universal Optimizations
+- Pipeline state optimization
+- Resource reuse
+- Batch processing
+- Load balancing
+- Memory pooling
+
+##### 2.3.5.2 Platform-Specific Tuning
+```mermaid
+graph LR
+    A[Common Code] --> B{Platform Check}
+    B -->|x86| C[x86 Optimizations]
+    B -->|ARM| D[ARM Optimizations]
+    B -->|Other| E[Default Path]
+    
+    C --> F[Common Interface]
+    D --> F
+    E --> F
+```
 
 #### 2.3.2 Performance Metrics
 ##### 2.3.2.1 CPU Performance
