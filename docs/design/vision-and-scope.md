@@ -9,10 +9,10 @@
 ### 1.1 Problem Statement
 The field of graphics programming presents a significant educational challenge: while theoretical resources are abundant, practical implementation experiences are scarce. This leads to several key issues:
 
-**Current State**:
+**State of art**:
 - Learning graphics programming typically involves either:
   - Following tutorials that don't scale to production needs
-  - Or diving into complex engines without understanding core concepts
+  - Diving into complex engines without understanding core concepts
 - Documentation often explains *what* but rarely *why* and *how*
 - Real-world optimization techniques remain largely inaccessible to learners
 
@@ -625,22 +625,234 @@ graph TD
 
 ## 3. Technical Architecture
 ### 3.1 Layer System
-1. Platform Abstraction Layer
-2. Core Systems Layer
-3. Rendering Features Layer
-4. Tools & Debug Layer
+The Yashima Engine implements a layered architecture inspired by industrial control systems, specifically the centrifugal governor and hydraulic control principles. This design focuses on efficient resource management through rapid, binary decision-making processes.
 
-### 3.2 Subsystems
-- Memory Manager
-- Resource Manager
-- Render Thread Manager
-- Debug Systems
+#### 3.1.1 Core Architectural Principles
+##### 3.1.1.1 Layer Definitions
+```mermaid
+graph TD
+    A[ML Control Layer] --> B[Resource Management Layer]
+    B --> C[Core Engine Layer]
+    C --> D[Platform Abstraction Layer]
+    
+    E[Monitoring System] -.->|Feedback| A
+    E -.->|Feedback| B
+    E -.->|Feedback| C
+```
+
+##### 3.1.1.2 Machine Learning Control Layer
+- Purpose: Binary decision-making for resource allocation
+- Responsibility: Fast, focused control decisions
+- Characteristics:
+  - Microsecond response time
+  - Minimal resource footprint
+  - Binary output decisions
+  - Deterministic behavior
+
+##### 3.1.1.3 Resource Management Layer
+- Purpose: System resource distribution and control
+- Responsibility: Resource allocation and throttling
+- Characteristics:
+  - Real-time resource monitoring
+  - Threshold-based control
+  - Predictable response patterns
+  - Self-regulating behavior
+
+##### 3.1.1.4 Core Engine Layer
+- Purpose: Fundamental rendering operations
+- Responsibility: Graphics pipeline execution
+- Characteristics:
+  - Direct hardware interaction
+  - Performance-critical operations
+  - Resource consumption reporting
+  - State management
+
+##### 3.1.1.5 Platform Abstraction Layer
+- Purpose: Hardware and API abstraction
+- Responsibility: Platform-specific implementation
+- Characteristics:
+  - Hardware interface
+  - API compatibility
+  - Driver interaction
+  - System capabilities detection
+
+#### 3.1.2 Layer Communication
+```mermaid
+graph LR
+    A[Sensor Data] -->|State| B[ML Decision]
+    B -->|Control| C[Resource Manager]
+    C -->|Allocation| D[Engine Core]
+    D -->|Feedback| A
+```
+
+#### 3.1.3 Implementation Strategy
+1. Control Flow
+    - Clearly defined interfaces between layers
+    - ML Layer: Binary decisions
+    - Resource Layer: Resource distribution
+    - Core Layer: Rendering operations
+    - Platform Layer: Hardware interface
+
+2. Communication Patterns
+    - Unidirectional data flow
+    - Clear feedback loops
+    - Minimal cross-layer dependencies
+    - Standardized interfaces
+    - Resource Management
+    - Decision threshold: 100 microseconds
+    - Feedback interval: 16 milliseconds
+    - Adjustment rate: 0.1
+
+3. Resource Management
+    - Decision threshold: 100 microseconds
+    - Feedback interval: 16 milliseconds
+    - Adjustment rate: 0.1
+
+#### 3.1.4 Architectural Decisions
+##### 3.1.4.1 ML Integration (ADR-001)
+- Decision: Implement focused, binary ML controller
+- Rationale: Optimize for speed and simplicity
+- Consequences:
+  - Predictable performance
+  - Minimal resource overhead
+  - Reduced maintenance
+  - Clear failure modes
+
+##### 3.1.4.2 Layer Separation (ADR-002)
+- Decision: Strict layer boundaries with defined interfaces
+- Rationale: Maintain system stability and clarity
+- Consequences:
+  - Clear responsibility separation
+  - Simplified testing
+  - Improved maintainability
+  - Controlled dependencies
+
+##### 3.1.4.3 Resource Management (ADR-003)
+- Decision: Self-regulating resource control system
+- Rationale: Ensure system stability and efficiency
+- Consequences:
+  - Predictable behavior
+  - Automatic adjustment
+  - Efficient resource usage
+  - Natural load balancing
+
+#### 3.1.5 Performance Considerations
+##### 3.1.5.1 Response Times
+| Layer | Target Response | Priority |
+|-------|-----------------|----------|
+| ML Control | 100μs | Critical |
+| Resource Management | 1ms | High |
+| Core Engine | 16ms | Standard |
+| Platform | Variable | Low |
+
+##### 3.1.5.2 Resource Allocation
+- ML Layer: Maximum 1% system resources
+- Resource Management: Maximum 5% system resources
+- Core Engine: Maximum 90% system resources
+- Platform Layer: Maximum 4% system resources
 
 ## 4. Technical Specifications
 ### 4.1 Rendering Features
-| Feature | Priority | Technical Scope |
-|---------|----------|----------------|
-| [Feature 1] | Must-Have/Nice-to-Have | [Technical Details] |
+#### 4.1.1 Feature Priority Matrix
+
+| Feature | Priority | Hardware Requirements | Educational Value |
+|---------|----------|---------------------|-------------------|
+| Forward Rendering | Must-Have | Baseline | Critical |
+| Basic Lighting | Must-Have | Baseline | High |
+| Texture Mapping | Must-Have | Baseline | High |
+| Simple Shaders | Must-Have | Baseline | Critical |
+| Post-Processing | Optional | Enhanced | Medium |
+| Advanced Lighting | Optional | Enhanced | Medium |
+| Deferred Rendering | Future | High-End | Advanced |
+
+#### 4.1.2 Core Features Implementation
+##### 4.1.2.1 Forward Rendering Pipeline
+- Purpose: Basic rendering path implementation
+- Target Performance: 30 FPS at 720p-1080p
+- Characteristics:
+  - Single-pass rendering
+  - Direct lighting calculations
+  - Immediate mode rendering
+  - Basic depth testing
+
+##### 4.1.2.2 Basic Lighting System
+- Purpose: Fundamental lighting calculations
+- Implementation:
+  - Directional lights
+  - Point lights
+  - Basic shadows
+  - Diffuse lighting
+
+##### 4.1.2.3 Texture System
+- Purpose: Material and surface representation
+- Features:
+  - Diffuse textures
+  - Basic UV mapping
+  - Texture filtering
+  - Mipmap support
+
+##### 4.1.2.4 Shader Implementation
+- Purpose: Programmable rendering pipeline
+- Core Shaders:
+  - Vertex shaders
+  - Pixel shaders
+  - Basic compute shaders
+  - Debug visualization
+
+#### 4.1.3 Performance Targets
+##### 4.1.3.1 Baseline Configuration
+- Resolution: 720p
+- Frame Rate: 30 FPS stable
+- Draw Calls: ≤ 1000 per frame
+- Triangles: ≤ 100,000 per frame
+
+##### 4.1.3.2 Enhanced Configuration
+- Resolution: 1080p
+- Frame Rate: 60 FPS target
+- Draw Calls: ≤ 2000 per frame
+- Triangles: ≤ 250,000 per frame
+
+#### 4.1.4 Educational Integration
+##### 4.1.4.1 Pipeline Visualization
+- Purpose: Render pipeline understanding
+- Features:
+  - Step-by-step execution
+  - State visualization
+  - Buffer inspection
+  - Performance metrics
+
+##### 4.1.4.2 Debug Features
+- Purpose: Learning and troubleshooting
+- Tools:
+  - Frame debugger
+  - Shader debugger
+  - Resource viewer
+  - Performance profiler
+
+#### 4.1.5 Technical Constraints
+##### 4.1.5.1 Hardware Limitations
+- Minimum GPU: Intel UHD Graphics 620
+- Minimum API: DirectX 11
+- Minimum Memory: 2GB VRAM/Shared
+- Minimum Bandwidth: 25GB/s
+
+##### 4.1.5.2 Software Dependencies
+- DirectX SDK
+- Platform Tools
+- Debug Runtime
+- Development Tools
+
+#### 4.1.6 Feature Scaling
+##### 4.1.6.1 Quality Levels
+- Low: Basic features only
+- Medium: Added post-processing
+- High: Full feature set
+
+##### 4.1.6.2 Performance Scaling
+- Resolution scaling
+- LOD system
+- Effect quality
+- Draw distance
 
 ### 4.2 Performance Budgets
 | System | Budget | Measurement |

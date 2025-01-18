@@ -2,8 +2,6 @@
 
 <div align="center">
 
-![Yashima Engine Logo][logo-placeholder]
-
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badges/)
@@ -70,7 +68,7 @@ Our documentation is structured to support both learning and development:
 We welcome contributions from developers of all skill levels! See our [Contributing Guide](CONTRIBUTING.md) for details.
 
 ### Development Prerequisites
-- Visual Studio 2022 or later
+- Visual Studio 2019+
 - DirectX SDK
 - CMake 3.20+
 - Python 3.8+ (for build scripts)
