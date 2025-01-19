@@ -868,12 +868,12 @@ graph LR
 #### 4.1.5 Technical Constraints
 ##### 4.1.5.1 Hardware Limitations
 - Minimum GPU: Intel UHD Graphics 620
-- Minimum API: DirectX 11
+- Minimum API: Vulkan 1.2
 - Minimum Memory: 2GB VRAM/Shared
 - Minimum Bandwidth: 25GB/s
 
 ##### 4.1.5.2 Software Dependencies
-- DirectX SDK
+- Vulkan SDK
 - Platform Tools
 - Debug Runtime
 - Development Tools
@@ -893,13 +893,13 @@ graph LR
 ### 4.2 Performance Budgets
 #### 4.2.1 Frame Budget Distribution
 ##### 4.2.1.1 Target Frame Times
-| Phase | OpenGL (ms) | DirectX 11 (ms) | Budget % |
-|-------|-------------|-----------------|-----------|
-| CPU Preparation | 5.5 | 5.5 | 16.5% |
-| Draw Call Submission | 4.0 | 3.5 | 12.0% |
-| GPU Rendering | 20.0 | 20.0 | 60.0% |
-| Present/Sync | 3.5 | 4.0 | 11.5% |
-| **Total** | **33.33** | **33.33** | **100%** |
+| Phase | Vulkan (ms) | Budget % |
+|-------|-------------|----------|
+| CPU Preparation | 5.5 | 16.5% |
+| Draw Call Submission | 3.5 | 12.0% |
+| GPU Rendering | 20.0 | 60.0% |
+| Present/Sync | 4.0 | 11.5% |
+| **Total** | **33.33** | **100%** |
 
 ##### 4.2.1.2 GPU Timeline
 - Vertex Processing: 7.0ms
@@ -1019,10 +1019,10 @@ graph LR
   - Feedback loops
 
 #### 5.1.4 API Expansion Phase (Q3-Q4)
-- Purpose: DirectX 11 implementation
+- Purpose: Vulkan 1.2 implementation
 - Focus: API abstraction
 - Deliverables:
-  - DirectX 11 backend
+  - Vulkan 1.2 backend
   - API abstraction layer
   - Platform-specific optimizations
   - Cross-API validation
@@ -1034,7 +1034,7 @@ graph TD
     B --> C[Rendering Pipeline]
     C --> D[ML Integration]
     B --> E[API Abstraction]
-    E --> F[DirectX Implementation]
+    E --> F[Vulkan Implementation]
     
     G[Debug System] --> B
     G --> C
@@ -1167,7 +1167,7 @@ graph TD
 #### 6.5.1 Priority Matrix
 | Debt Item | Impact | Effort | Timeline |
 |-----------|--------|--------|----------|
-| OpenGL to DirectX | High | High | Q3-Q4 |
+| OpenGL to Vulkan | High | High | Q3-Q4 |
 | Single to Multi-threaded | High | Medium | Q2-Q3 |
 | Basic to Advanced ML | Medium | High | Q3 |
 | Memory System | High | Medium | Q2 |.
@@ -1193,7 +1193,7 @@ graph LR
 #### 7.1.1 Core Development Tools
 | Tool | Purpose | Version | License |
 |------|---------|---------|---------|
-| Visual Studio | Primary IDE | 2022 Community/Pro | Commercial/Free |
+| GCC/Clang | Primary Compiler | ≥11.0 | GPL/Apache |
 | CMake | Build System | ≥3.20 | BSD |
 | Git | Version Control | ≥2.35 | GPL-2.0 |
 | Python | Build Scripts | ≥3.8 | PSF |
@@ -1275,10 +1275,10 @@ graph LR
 
 ### 7.6 Development Tools
 #### 7.6.1 Graphics Development
-- OpenGL Debug Context
-- DirectX Debug Layer
+- Vulkan Validation Layers
 - GPU Timing Tools
 - Frame Capture Tools
+- Memory Leak Detection
 
 #### 7.6.2 Performance Analysis
 - CPU Profilers
@@ -1475,7 +1475,7 @@ graph LR
 |------|------------|----------------|----------------------|
 | Rasterization | Conversion of vector graphics to pixels | Computer Graphics, Real-time Rendering | "Graphics Pipeline Performance" (Akenine-Möller et al.) |
 | Pipeline Stalls | Interruptions in rendering pipeline flow | Performance Optimization, Hardware Architecture | "Understanding GPU Pipeline Stalls" (NVIDIA Technical Brief) |
-| Shader Model | Programmable stage specification | Graphics Programming, Hardware Capabilities | DirectX Shader Model Documentation |
+| Shader Model | Programmable stage specification | Graphics Programming, Hardware Capabilities | Vulkan Shader Model Documentation |
 | Memory Coherency | Efficient memory access patterns | Computer Architecture, Performance | "Cache-Conscious Data Structures" (Chilimbi et al.) |
 
 ##### A.1.2 Machine Learning in Graphics
@@ -1532,9 +1532,9 @@ graph TD
 #### A.4 Implementation References
 ##### A.4.1 Technical Standards
 - OpenGL Specifications
-- DirectX Documentation
-- Vulkan Programming Guide
-- TensorFlow Documentation
+- Vulkan Documentation and Programming Guide
+- TensorFlow C API Reference
+- Graphics Programming Resources
 
 ##### A.4.2 Best Practices
 | Practice | Context | Reference |
@@ -1581,46 +1581,40 @@ graph TD
 
 ### Appendix C: API Reference
 #### C.1 Core API Structures
-```cpp
-// Example API structures
-struct RenderState {
-    bool isValid;
-    uint32_t frameCount;
-    float deltaTime;
-};
+#### Appendix C: API Reference
 
-struct ResourceMetrics {
-    size_t memoryUsage;
-    float utilizationRate;
-    uint32_t activeHandles;
-};
-```
+##### C.1 Core API Concepts
+| Component | Purpose | Considerations |
+|-----------|---------|----------------|
+| State Management | System state tracking | Thread safety, consistency |
+| Resource Handling | Resource lifecycle | Memory management, allocation |
+| Performance Metrics | System monitoring | Real-time tracking, overhead |
+| Control Interface | System control | Response time, reliability |
 
-#### C.2 Common Error Codes
-| Code | Description | Recovery Action |
-|------|-------------|-----------------|
-| E_RESOURCE_EXHAUSTED | Resource limit reached | Release unused resources |
-| E_INVALID_STATE | Invalid system state | Reset to known state |
-| E_TIMEOUT | Operation timed out |Retry or reduce load |
-| E_DEVICE_LOST | Device connection lost | Reinitialize device |
+##### C.2 Common Error Categories
+| Category | Scope | Impact Level |
+|----------|-------|--------------|
+| Resource Exhaustion | Resource management | Critical |
+| Invalid State | System operation | High |
+| Timeout | Operation completion | Medium |
+| Device Loss | Hardware connection | Critical |
 
 ### Appendix D: Development Tools Reference
-#### D.1 Build Configuration
-```yaml
-# Example build configuration
-build_type: Release
-optimization: O2
-debug_symbols: true
-platform: x86_64
-```
+#### D.1 Build Configuration Categories
+| Configuration Type | Purpose | Considerations |
+|-------------------|---------|----------------|
+| Debug | Development and testing | Debug symbols, minimal optimization |
+| Release | Production deployment | Full optimization, no debug info |
+| Profile | Performance analysis | Instrumentation, metrics gathering |
+| Test | Automated testing | Test coverage, validation tools |
 
 #### D.2 Debug Commands
-| Command | Purpose | Usage |
-|---------|---------|-------|
-| profile_frame | Capture frame metrics | Development |
-| dump_resources | List active resources | Debugging |
-| trace_ml | Track ML decisions | Performance analysis |
-| show_metrics | Display real-time stats | Monitoring |
+| Command Category | Purpose | Usage Context |
+|-----------------|---------|---------------|
+| Performance Profiling | Metric collection | Development |
+| Resource Monitoring | Asset tracking | Debugging |
+| System Analysis | State inspection | Performance analysis |
+| Diagnostic Tools | Issue investigation | Monitoring |
 
 ### Appendix E: Mathematical Reference
 #### E.1 Common Calculations
