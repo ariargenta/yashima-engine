@@ -35,13 +35,13 @@ This project is in initial development. Current phase: Architecture Design
 - CPU: Intel i3 8th Gen / AMD Ryzen 3 2200G
 - GPU: Intel UHD 620 or equivalent integrated graphics
 - RAM: 8GB System Memory
-- API: DirectX 11
+- API: Vulkan 1.2
 
 #### Recommended
 - CPU: Intel i5 10th Gen / Ryzen 5 3600
 - GPU: GTX 1650 / RX 580 / Intel Arc A380
 - RAM: 16GB System Memory
-- API: DirectX 11 with Vulkan capability
+- API: Vulkan 1.3
 
 ## 🚀 Getting Started
 [Coming Soon]
@@ -69,9 +69,9 @@ We welcome contributions from developers of all skill levels! See our [Contribut
 
 ### Development Prerequisites
 - Visual Studio 2019+
-- DirectX SDK
+- Vulkan SDK 1.2+
 - CMake 3.20+
-- Python 3.8+ (for build scripts)
+- Python 3.8+
 
 ### Getting the Source
 ```bash
