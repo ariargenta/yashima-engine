@@ -2,7 +2,7 @@
 ## Version 1.0
 ### Revision History
 | Date | Version | Description | Author |
-|------|---------|-------------|--------|
+|:----:|:-------:|:-----------:|:------:|
 | 2024-01-05 | 1.0 | Initial version | Aria Argenta |
 
 ## 1. Project Vision
@@ -185,7 +185,7 @@ The Yashima Engine's design principles are arranged in order of fundamental impa
 
 #### 1.3.7 Design Principle Matrix
 | Principle | Impact Scope | Verification Method | Learning Value |
-|-----------|--------------|---------------------|----------------|
+|:---------:|:------------:|:-------------------:|:--------------:|
 | Performance by Design | System-wide | Benchmarking | High |
 | Educational Transparency | Documentation | Review Process | Critical |
 | Systematic Modularity | Architecture | Unit Testing | High |
@@ -283,7 +283,7 @@ Advanced implementation path demonstrating modern techniques:
 Each pipeline stage includes built-in performance monitoring:
 
 | Stage | Metrics | Tools |
-|-------|---------|-------|
+|:-----:|:-------:|:-----:|
 | Geometry | Vertex count, transform time | Geometry profiler |
 | Raster | Fill rate, overdraw | Pixel counter |
 | Pixel | Shader complexity | GPU profiler |
@@ -390,7 +390,7 @@ graph LR
 
 ##### 2.2.5.2 Memory Hierarchy
 | Level | Purpose | Access Time | Size Constraints |
-|-------|---------|-------------|------------------|
+|:-----:|:-------:|:-----------:|:----------------:|
 | GPU Memory | Active assets | Immediate | Platform dependent |
 | System RAM | Ready pool | Fast | Several GB |
 | Disk Cache | Quick loading | Medium | Platform storage |
@@ -474,7 +474,7 @@ graph LR
 ```
 
 | Operation | Target | Consideration |
-|-----------|--------|---------------|
+|:---------:|:------:|:-------------:|
 | Buffer Management | <1ms | Universal concept |
 | Command Submission | <0.5ms | Common across APIs |
 | Synchronization | <1ms | Platform agnostic |
@@ -490,7 +490,7 @@ graph LR
 #### 2.3.2 Architecture-Specific Optimizations
 ##### 2.3.2.1 Implementation Matrix
 | Concept | x86 | ARM | Others |
-|---------|-----|-----|--------|
+|:-------:|:---:|:---:|:------:|
 | Memory Alignment | 64 bytes | 32/64 bytes | Variable |
 | SIMD Operations | AVX/SSE | NEON | Platform specific |
 | Cache Management | x86 specific | ARM specific | Architecture dependent |
@@ -515,7 +515,7 @@ graph TD
 #### 2.3.3 Performance Metrics
 ##### 2.3.3.1 Universal Metrics
 | Metric | Target | Platform Independence |
-|--------|--------|-----------------------|
+|:------:|:------:|:---------------------:|
 | Frame Time | 33.33ms | Universal |
 | Draw Calls | <1000/frame | Universal |
 | Buffer Updates | <100/frame | Universal |
@@ -523,7 +523,7 @@ graph TD
 
 #### 2.3.3.2 Platform-Specific Metrics
 | Metric | Implementation | Abstraction |
-|--------|----------------|-------------|
+|:------:|:--------------:|:-----------:|
 | Memory Access | Platform optimized | Common interface |
 | Compute Units | Architecture specific | Standard usage |
 | Thread Scheduling | OS dependent | Abstract model |
@@ -541,7 +541,7 @@ graph TD
 
 ##### 2.3.4.2 Platform Adaptation
 | Resource | Common Pattern | Platform Specific |
-|----------|----------------|-------------------|
+|:--------:|:--------------:|:-----------------:|
 | Memory | Pool management | Alignment/Allocation |
 | Compute | Work submission | Hardware scheduling |
 | Synchronization | Event system | OS primitives |
@@ -582,7 +582,7 @@ graph TD
 ```
 
 | Metric | Target | Architecture Consideration |
-|--------|--------|----------------------------|
+|:------:|:------:|:--------------------------:|
 | Cache Miss Rate | <5% | x86 cache line alignment |
 | Branch Misprediction | <1% | x86 branch prediction |
 | IPC | >2.0 | Instruction scheduling |
@@ -590,7 +590,7 @@ graph TD
 
 ##### 2.3.2.2 Resource Allocation
 | Resource | Budget | Architecture Impact |
-|----------|--------|---------------------|
+|:--------:|:------:|:-------------------:|
 | L1 Cache | 32KB | Per-core x86 cache |
 | L2 Cache | 256KB | Shared cache |
 | L3 Cache | 6MB | LLC management |
@@ -617,7 +617,7 @@ graph LR
 #### 2.3.4 System Integration
 ##### 2.3.4.1 CPU-GPU Communication
 | Operation | Latency Target | Bandwidth Target |
-|-----------|----------------|------------------|
+|:---------:|:--------------:|:----------------:|
 | PCIe Transfer | <10μs | 16 GB/s |
 | Memory Mapping | <1ms | System RAM speed |
 | DMA Operations | <100μs | Direct path |
@@ -631,7 +631,7 @@ graph LR
 #### 2.3.5 Performance Monitoring
 ##### 2.3.5.1 Hardware Counters
 | Counter | Purpose | Architecture Feature |
-|---------|---------|----------------------|
+|:-------:|:-------:|:--------------------:|
 | Cache Misses | Memory efficiency | x86 PMU |
 | Branch Misses | Flow efficiency | x86 PMU |
 | SIMD Usage | Vector efficiency | x86 PMU |
@@ -654,7 +654,7 @@ graph TD
 #### 2.3.6 Power Management
 ##### 2.3.6.1 Power States
 | State | Power Usage | Response Time |
-|-------|-------------|---------------|
+|:-----:|:-----------:|:-------------:|
 | C0 (Active) | 100% | Immediate |
 | C1 (Halt) | 80% | <1μs |
 | C2 (Stop-Clock) | 60% | <10μs |
@@ -776,7 +776,7 @@ graph LR
 #### 3.1.5 Performance Considerations
 ##### 3.1.5.1 Response Times
 | Layer | Target Response | Priority |
-|-------|-----------------|----------|
+|:-----:|:---------------:|:--------:|
 | ML Control | 100μs | Critical |
 | Resource Management | 1ms | High |
 | Core Engine | 16ms | Standard |
@@ -792,7 +792,7 @@ graph LR
 ### 4.1 Rendering Features
 #### 4.1.1 Feature Priority Matrix
 | Feature | Priority | Hardware Requirements | Educational Value |
-|---------|----------|-----------------------|-------------------|
+|:-------:|:--------:|:---------------------:|:-----------------:|
 | Forward Rendering | Must-Have | Baseline | Critical |
 | Basic Lighting | Must-Have | Baseline | High |
 | Texture Mapping | Must-Have | Baseline | High |
@@ -894,7 +894,7 @@ graph LR
 #### 4.2.1 Frame Budget Distribution
 ##### 4.2.1.1 Target Frame Times
 | Phase | Vulkan (ms) | Budget % |
-|-------|-------------|----------|
+|:-----:|:-----------:|:--------:|
 | CPU Preparation | 5.5 | 16.5% |
 | Draw Call Submission | 3.5 | 12.0% |
 | GPU Rendering | 20.0 | 60.0% |
@@ -910,7 +910,7 @@ graph LR
 #### 4.2.2 Memory Allocation
 ##### 4.2.2.1 Runtime Memory Budget
 | Resource Type | Size (MB) | Priority |
-|--------------|-----------|-----------|
+|:-------------:|:---------:|:--------:|
 | Textures | 512 | High |
 | Meshes | 256 | High |
 | Shaders | 64 | Critical |
@@ -928,7 +928,7 @@ graph LR
 #### 4.2.3 Bandwidth Constraints
 ##### 4.2.3.1 Memory Bandwidth
 | Operation | Budget (GB/s) | Notes |
-|-----------|--------------|-------|
+|:---------:|:------------:|:------:|
 | Texture Reads | 8.0 | Including mipmaps |
 | Vertex Fetch | 4.0 | Including cache |
 | Buffer Updates | 2.0 | Dynamic resources |
@@ -943,7 +943,7 @@ graph LR
 #### 4.2.4 CPU Utilization
 ##### 4.2.4.1 Thread Budget
 | Thread Type | Usage % | Priority |
-|-------------|---------|-----------|
+|:-----------:|:-------:|:--------:|
 | Main Thread | 30% | Critical |
 | Render Thread | 40% | Critical |
 | Resource Thread | 15% | High |
@@ -959,7 +959,7 @@ graph LR
 #### 4.2.5 Power Budget
 ##### 4.2.5.1 Mobile/Integrated
 | Component | Power Target (W) |
-|-----------|-----------------|
+|:---------:|:----------------:|
 | GPU Processing | 10-15 |
 | CPU Usage | 5-8 |
 | Memory | 2-3 |
@@ -968,7 +968,7 @@ graph LR
 
 ##### 4.2.5.2 Desktop/Dedicated
 | Component | Power Target (W) |
-|-----------|-----------------|
+|:---------:|:----------------:|
 | GPU Processing | 75-100 |
 | CPU Usage | 25-35 |
 | Memory | 10-15 |
@@ -1044,7 +1044,7 @@ graph TD
 ### 5.3 Risk Management
 #### 5.3.1 Technical Risks
 | Risk | Impact | Probability | Mitigation |
-|------|--------|------------|------------|
+|:----:|:------:|:-----------:|:----------:|
 | Performance Issues | High | Medium | Early | profiling and benchmarking |
 | API Compatibility | High | Medium | Robust abstraction | layer |
 | ML Integration | Medium | High | Phased implementation |
@@ -1052,7 +1052,7 @@ graph TD
 
 #### 5.3.2 Development Risks
 | Risk | Impact | Probability | Mitigation |
-|------|--------|------------|------------|
+|:----:|:------:|:----------:|:-----------:|
 | Scope Creep | High | High | Clear phase boundaries |
 | Technical Debt | Medium | High | Regular refactoring |
 | Integration Issues | High | Medium | Continuous integration |
@@ -1099,7 +1099,7 @@ graph TD
 ### 6.1 Strategic Technical Debt
 #### 6.1.1 Intentional Debt Categories
 | Category | Justification | Payoff Timeline |
-|----------|---------------|-----------------|
+|:--------:|:-------------:|:---------------:|
 | OpenGL First | Learning curve, immediate feedback | Q3-Q4 |
 | Simple ML Model | Initial validation, performance baseline | Q2-Q3 |
 | Basic Resource Management | Early functionality, clear examples | Q2 |
@@ -1114,7 +1114,7 @@ graph TD
 ### 6.2 Debt Monitoring
 #### 6.2.1 Technical Debt Metrics
 | Metric | Threshold | Monitoring Frequency |
-|--------|-----------|---------------------|
+|:------:|:---------:|:--------------------:|
 | Code Coverage | ≥80% | Weekly |
 | Cyclomatic Complexity | ≤15 | Per PR |
 | Documentation Coverage | ≥90% | Weekly |
@@ -1166,7 +1166,7 @@ graph TD
 ### 6.5 Debt Resolution Schedule
 #### 6.5.1 Priority Matrix
 | Debt Item | Impact | Effort | Timeline |
-|-----------|--------|--------|----------|
+|:---------:|:------:|:------:|:--------:|
 | OpenGL to Vulkan | High | High | Q3-Q4 |
 | Single to Multi-threaded | High | Medium | Q2-Q3 |
 | Basic to Advanced ML | Medium | High | Q3 |
@@ -1192,7 +1192,7 @@ graph LR
 ### 7.1 Development Environment
 #### 7.1.1 Core Development Tools
 | Tool | Purpose | Version | License |
-|------|---------|---------|---------|
+|:----:|:-------:|:-------:|:-------:|
 | GCC/Clang | Primary Compiler | ≥11.0 | GPL/Apache |
 | CMake | Build System | ≥3.20 | BSD |
 | Git | Version Control | ≥2.35 | GPL-2.0 |
@@ -1201,7 +1201,7 @@ graph LR
 
 #### 7.1.2 Graphics Development
 | Tool | Purpose | Version |
-|------|---------|---------|
+|:----:|:-------:|:-------:|
 | RenderDoc | Graphics Debugger | ≥1.13 |
 | GPU PerfStudio | Performance Analysis | Latest |
 | NSight Graphics | NVIDIA Debugging | Latest |
@@ -1220,7 +1220,7 @@ graph TD
 
 #### 7.2.2 Build Configurations
 | Configuration | Purpose | Optimizations |
-|---------------|---------|---------------|
+|:-------------:|:-------:|:-------------:|
 | Debug | Development | Disabled |
 | RelWithDebInfo | Testing | Partial |
 | Release | Performance | Full |
@@ -1235,7 +1235,7 @@ graph TD
 
 #### 7.3.2 Testing Environments
 | Environment | Purpose | Configuration |
-|-------------|---------|---------------|
+|:-----------:|:-------:|:-------------:|
 | Local | Development | Full Debug |
 | CI Pipeline | Verification | Limited Resources |
 | Performance | Benchmarking | Dedicated Hardware |
@@ -1244,7 +1244,7 @@ graph TD
 ### 7.4 Continuous Integration
 #### 7.4.1 CI/CD Tools
 | Tool | Purpose |
-|------|---------|
+|:----:|:-------:|
 | GitHub Actions | Primary CI/CD |
 | SonarQube	Code | Quality |
 | CodeCov | Coverage Reports |
@@ -1261,7 +1261,7 @@ graph LR
 ### 7.5 Documentation Tools
 #### 7.5.1 Documentation Generation
 | Tool | Purpose |
-|------|---------|
+|:----:|:-------:|
 | Doxygen | API Documentation |
 | Sphinx | User Documentation |
 | MkDocs | Project Website |
@@ -1289,7 +1289,7 @@ graph LR
 ### 7.7 Machine Learning Tools
 #### 7.7.1 ML Core Implementation
 | Component | Implementation | Justification |
-|-----------|----------------|---------------|
+|:---------:|:--------------:|:-------------:|
 | TensorFlow C API | libtensorflow | Direct memory control |
 | CUDA Runtime | C API | Hardware access |
 | Custom Allocators | C | Memory optimization |
@@ -1307,7 +1307,7 @@ graph TD
 ```
 #### 7.7.3 Critical Components
 | Component | Language | Purpose |
-|-----------|----------|---------|
+|:---------:|:--------:|:-------:|
 | ML Kernel | C | Core decision making |
 | Memory Management | C | Resource control |
 | State Control | C | System management |
@@ -1321,7 +1321,7 @@ graph TD
 
 #### 7.7.5 Development Tools
 | Tool | Purpose | Integration |
-|------|---------|-------------|
+|:----:|:-------:|:-----------:|
 | GDB | Core debugging | Direct C debugging |
 | Valgrind | Memory analysis | Raw memory tracking |
 | perf | Performance profiling | System-level analysis |
@@ -1338,7 +1338,7 @@ graph LR
 
 #### 7.7.7 Shader Analogy
 | Concept | Shader | ML Control |
-|---------|--------|------------|
+|:-------:|:------:|:----------:|
 | Memory Model | Direct | Direct |
 | Execution | Per vertex/pixel | Per decision |
 | Optimization | Hardware-specific | Hardware-specific |
@@ -1361,7 +1361,7 @@ graph LR
 #### 8.1 Documentation Types and Purposes
 ##### 8.1.1 Architecture Documentation
 | Type | Purpose | Audience | Update Frequency |
-|------|---------|----------|------------------|
+|:----:|:-------:|:--------:|:----------------:|
 | System Design | Core architecture decisions | Developers/Architects | Major versions |
 | ADRs | Decision tracking | Development team | Per major decision |
 | Component Diagrams | System visualization | All stakeholders | As architecture evolves |
@@ -1399,7 +1399,7 @@ graph LR
 
 #### 8.3.2 Interactive Examples
 | Component | Documentation Type | Interactive Element |
-|-----------|--------------------|---------------------|
+|:---------:|:------------------:|:-------------------:|
 | Renderer | Live demos | Real-time visualization |
 | ML Control | State viewer | Decision monitoring |
 | Performance | Profiler | Real-time metrics |
@@ -1429,7 +1429,7 @@ graph TD
 
 #### 8.5.2 Version Control
 | Element | Version Strategy | Update Trigger |
-|---------|------------------|----------------|
+|:-------:|:----------------:|:--------------:|
 | API Docs | Semantic version | Code changes |
 | Tutorials | Major versions | Feature additions |
 | Examples | Continuous | Implementation changes |
@@ -1453,7 +1453,7 @@ graph TD
 ### 8.7 Maintenance Strategy
 #### 8.7.1 Update Triggers
 | Component | Trigger | Validation Required |
-|-----------|---------|---------------------|
+|:---------:|:-------:|:-------------------:|
 | API Docs | Code changes | Automatic |
 | Architecture | Design changes | Peer review |
 | Tutorials | Feature changes | User testing |
@@ -1472,7 +1472,7 @@ graph LR
 #### A.1 Core Concepts Index
 ##### A.1.1 Graphics Pipeline Fundamentals
 | Term | Definition | Research Areas | Key Papers/References |
-|------|------------|----------------|----------------------|
+|:----:|:----------:|:--------------:|:---------------------:|
 | Rasterization | Conversion of vector graphics to pixels | Computer Graphics, Real-time Rendering | "Graphics Pipeline Performance" (Akenine-Möller et al.) |
 | Pipeline Stalls | Interruptions in rendering pipeline flow | Performance Optimization, Hardware Architecture | "Understanding GPU Pipeline Stalls" (NVIDIA Technical Brief) |
 | Shader Model | Programmable stage specification | Graphics Programming, Hardware Capabilities | Vulkan Shader Model Documentation |
@@ -1480,7 +1480,7 @@ graph LR
 
 ##### A.1.2 Machine Learning in Graphics
 | Term | Definition | Research Areas | Key Papers/References |
-|------|------------|----------------|----------------------|
+|:----:|:----------:|:--------------:|:---------------------:|
 | Inference Latency | Time taken for ML prediction | Real-time Systems, ML Optimization | "Deep Learning Inference in Real-time" (Google Research) |
 | Binary Classification | Two-state decision making | Machine Learning, Control Systems | "Statistical Learning Theory" (Vapnik) |
 | Model Quantization | Reducing model precision | ML Optimization, Embedded Systems | "TensorFlow Lite Documentation" |
@@ -1488,7 +1488,7 @@ graph LR
 
 ##### A.1.3 System Architecture
 | Term | Definition | Research Areas | Key Papers/References |
-|------|------------|----------------|----------------------|
+|:----:|:----------:|:--------------:|:---------------------:|
 | Resource Governor | System resource management | Operating Systems, Resource Management | "Resource Management in Operating Systems" |
 | Feedback Control | System state regulation | Control Systems, Real-time Systems | "Digital Control Systems" (Åström) |
 | Memory Hierarchy | Multi-level memory system | Computer Architecture | "Computer Architecture: A Quantitative Approach" (Hennessy & Patterson) |
@@ -1509,7 +1509,7 @@ graph TD
 
 ##### A.2.2 Key Research Topics
 | Topic | Relevance | Current Research |
-|-------|-----------|------------------|
+|:-----:|:---------:|:----------------:|
 | Real-time ML | Resource optimization | Embedded ML systems |
 | Pipeline Optimization | Performance improvement | Modern GPU architectures |
 | Resource Management | System efficiency | Adaptive systems |
@@ -1524,7 +1524,7 @@ graph TD
 
 ##### A.3.2 Recent Developments
 | Area | Key Development | Reference |
-|------|-----------------|-----------|
+|:----:|:---------------:|:---------:|
 | Graphics Pipeline | Modern GPU Architecture | Recent SIGGRAPH papers |
 | ML Systems | Real-time Inference | ML conferences (NeurIPS, ICML) |
 | Resource Management | Adaptive Systems | Systems conferences (SOSP, OSDI) |
@@ -1538,7 +1538,7 @@ graph TD
 
 ##### A.4.2 Best Practices
 | Practice | Context | Reference |
-|----------|---------|-----------|
+|:--------:|:-------:|:---------:|
 | GPU Programming | Graphics optimization | GPU Gems series |
 | ML Integration | Real-time systems | TensorFlow guidelines |
 | Resource Management | System design | Microsoft patterns & practices |
@@ -1555,7 +1555,7 @@ graph LR
 
 ##### A.5.2 Resource Categories
 | Level | Resources | Purpose |
-|-------|-----------|---------|
+|:-----:|:---------:|:-------:|
 | Beginner | Textbooks, Tutorials | Foundation building |
 | Intermediate | Technical papers, Implementation guides | Practical knowledge |
 | Advanced | Research papers, Conference proceedings | Cutting-edge developments |
@@ -1573,7 +1573,7 @@ graph TD
 
 #### B.2 Baseline Performance Metrics
 | Metric | Target | Critical Threshold |
-|--------|--------|--------------------|
+|:------:|:------:|:------------------:|
 | Frame Time | 33.33ms | 40ms |
 | ML Response | 100μs | 150μs |
 | Memory Usage | 2GB | 2.5GB |
@@ -1585,7 +1585,7 @@ graph TD
 
 ##### C.1 Core API Concepts
 | Component | Purpose | Considerations |
-|-----------|---------|----------------|
+|:---------:|:-------:|:--------------:|
 | State Management | System state tracking | Thread safety, consistency |
 | Resource Handling | Resource lifecycle | Memory management, allocation |
 | Performance Metrics | System monitoring | Real-time tracking, overhead |
@@ -1593,7 +1593,7 @@ graph TD
 
 ##### C.2 Common Error Categories
 | Category | Scope | Impact Level |
-|----------|-------|--------------|
+|:--------:|:-----:|:------------:|
 | Resource Exhaustion | Resource management | Critical |
 | Invalid State | System operation | High |
 | Timeout | Operation completion | Medium |
@@ -1602,7 +1602,7 @@ graph TD
 ### Appendix D: Development Tools Reference
 #### D.1 Build Configuration Categories
 | Configuration Type | Purpose | Considerations |
-|-------------------|---------|----------------|
+|:------------------:|:-------:|:--------------:|
 | Debug | Development and testing | Debug symbols, minimal optimization |
 | Release | Production deployment | Full optimization, no debug info |
 | Profile | Performance analysis | Instrumentation, metrics gathering |
@@ -1610,7 +1610,7 @@ graph TD
 
 #### D.2 Debug Commands
 | Command Category | Purpose | Usage Context |
-|-----------------|---------|---------------|
+|:---------------:|:-------:|:-------------:|
 | Performance Profiling | Metric collection | Development |
 | Resource Monitoring | Asset tracking | Debugging |
 | System Analysis | State inspection | Performance analysis |
@@ -1619,7 +1619,7 @@ graph TD
 ### Appendix E: Mathematical Reference
 #### E.1 Common Calculations
 | Operation | Formula | Usage |
-|-----------|---------|-------|
+|:---------:|:-------:|:-----:|
 | Frame Time | 1000ms / FPS | Performance |
 | Memory Bandwidth | Bytes * Frequency | Resource planning |
 | Load Factor | Current / Maximum | Resource management |
@@ -1638,7 +1638,7 @@ graph LR
 ### Appendix F: System Constants and Limits
 #### F.1 System Constraints
 | Constraint | Value | Justification |
-|------------|-------|---------------|
+|:----------:|:-----:|:-------------:|
 | Maximum Draw Calls | 1000/frame | Memory bandwidth limitation |
 | Maximum Texture Size | 4096x4096 | GPU memory management |
 | Maximum Vertex Count | 1M/frame | Processing overhead |
@@ -1656,7 +1656,7 @@ graph TD
 
 #### F.3 Operation Parameters
 | Parameter | Range | Default | Units |
-|-----------|-------|---------|-------|
+|:---------:|:-----:|:-------:|:-----:|
 | Frame Budget | 16.67-33.33 | 33.33 | ms |
 | Memory Buffer | 64-256 | 128 | MB |
 | Cache Size | 32-128 | 64 | MB |
@@ -1664,7 +1664,7 @@ graph TD
 
 #### F.4 Resource Limits Matrix
 | Resource Type | Minimum | Maximum | Optimal |
-|---------------|---------|---------|---------|
+|:-------------:|:-------:|:-------:|:-------:|
 | Vertex Buffers | 16 | 1024 | 256 |
 | Texture Units | 8 | 32 | 16 |
 | Render Targets | 2 | 8 | 4 |
@@ -1681,7 +1681,7 @@ graph LR
 
 #### F.6 Performance Envelopes
 | Operation | Soft Limit | Hard Limit | Recovery Action |
-|-----------|------------|------------|-----------------|
+|:---------:|:----------:|:----------:|:---------------:|
 | Memory Allocation | 80% | 95% | Resource cleanup |
 | CPU Usage | 75% | 90% | Load reduction |
 | GPU Usage | 85% | 95% | Quality reduction |
