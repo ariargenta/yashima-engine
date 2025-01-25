@@ -17,37 +17,55 @@ graph TD
 - Superseded: Replaced by a new decision
 
 ## ADR-001: Core Architecture Pattern
-- Status: Accepted
-- Context:
+- **Status:** Accepted
+- **Context:**
     - Need for educational clarity
     - Performance requirements
     - Resource optimization goals
     - System stability requirements
-- Decision: Implement a hybrid architecture combining:
+- **Decision:** Implement a hybrid architecture combining
     - ML-based control system
     - Resource management layer
     - Core rendering engine
     - Platform abstraction layer
-- Consequences:
+- **Consequences:**
   - Positive: Clear separation of concerns
   - Positive: Educational value through layering
   - Positive: Performance optimization potential
   - Negative: Initial development complexity
 
 ## ADR-002: Graphics API Selection
-- Status: Accepted
-- Context:
+- **Status:** Accepted
+- **Context:**
     - Need for cross-platform compatibility
     - Modern graphics API requirements
     - Educational accessibility
     - Performance considerations
-- Decision: Select Vulkan as primary graphics API:
+- **Decision:** Select Vulkan as primary graphics API
     - Modern, explicit graphics API
     - Cross-platform compatibility
     - Comprehensive debugging tools
     - Strong community support
-- Consequences
+- **Consequences:**
     - Positive: Platform independence
     - Positive: Performance control
     - Positive: Modern feature set
     - Negative: Higher initial complexity
+
+## ADR-003: Machine Learning Integration
+- **Status:** Accepted
+- **Context:**
+    - Need for efficient resource management
+    - Real-time performance requirements
+    - System stability goals
+    - Educational objectives
+- **Decision:** Implement focused ML control system
+    - Binary decision making
+    - Microsecond response time
+    - Minimal resource footprint
+    - TensorFlow C API integration
+- **Consequences:**
+    - Positive: Fast decision making
+    - Positive: Resource efficient
+    - Positive: Clear purpose
+    - Negative: Limited ML scope
