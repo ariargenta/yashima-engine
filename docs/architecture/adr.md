@@ -33,3 +33,21 @@ graph TD
   - Positive: Educational value through layering
   - Positive: Performance optimization potential
   - Negative: Initial development complexity
+
+## ADR-002: Graphics API Selection
+- Status: Accepted
+- Context:
+    - Need for cross-platform compatibility
+    - Modern graphics API requirements
+    - Educational accessibility
+    - Performance considerations
+- Decision: Select Vulkan as primary graphics API:
+    - Modern, explicit graphics API
+    - Cross-platform compatibility
+    - Comprehensive debugging tools
+    - Strong community support
+- Consequences
+    - Positive: Platform independence
+    - Positive: Performance control
+    - Positive: Modern feature set
+    - Negative: Higher initial complexity
