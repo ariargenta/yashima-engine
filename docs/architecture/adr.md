@@ -94,3 +94,23 @@ graph TD
     - Positive: Resource efficiency
     - Positive: Clear memory patterns
     - Negative: Implementation complexity
+
+## ADR-005: Threading Model
+- **Status:**
+    - Accepted
+- **Context:**
+    - Real-time performance needs
+    - Resource management requirements
+    - Cross-platform compatibility
+    - Educational considerations
+- **Decision:**
+    - Implement hybrid threading model
+        - Main thread for coordination
+        - Render thread for graphics
+        - Resource thread for management
+        - Worker pool for tasks
+- **Consequences:**
+    - Positive: Clear thread roles
+    - Positive: Performance scaling
+    - Positive: Resource utilization
+    - Negative: Synchronization complexity
