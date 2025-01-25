@@ -17,17 +17,19 @@ graph TD
 - Superseded: Replaced by a new decision
 
 ## ADR-001: Core Architecture Pattern
-- **Status:** Accepted
+- **Status:**
+    - Accepted
 - **Context:**
     - Need for educational clarity
     - Performance requirements
     - Resource optimization goals
     - System stability requirements
-- **Decision:** Implement a hybrid architecture combining
-    - ML-based control system
-    - Resource management layer
-    - Core rendering engine
-    - Platform abstraction layer
+- **Decision:**
+    - Implement a hybrid architecture combining
+        - ML-based control system
+        - Resource management layer
+        - Core rendering engine
+        - Platform abstraction layer
 - **Consequences:**
   - Positive: Clear separation of concerns
   - Positive: Educational value through layering
@@ -35,17 +37,19 @@ graph TD
   - Negative: Initial development complexity
 
 ## ADR-002: Graphics API Selection
-- **Status:** Accepted
+- **Status:**
+    - Accepted
 - **Context:**
     - Need for cross-platform compatibility
     - Modern graphics API requirements
     - Educational accessibility
     - Performance considerations
-- **Decision:** Select Vulkan as primary graphics API
-    - Modern, explicit graphics API
-    - Cross-platform compatibility
-    - Comprehensive debugging tools
-    - Strong community support
+- **Decision:**
+    - Select Vulkan as primary graphics API
+        - Modern, explicit graphics API
+        - Cross-platform compatibility
+        - Comprehensive debugging tools
+        - Strong community support
 - **Consequences:**
     - Positive: Platform independence
     - Positive: Performance control
@@ -53,19 +57,40 @@ graph TD
     - Negative: Higher initial complexity
 
 ## ADR-003: Machine Learning Integration
-- **Status:** Accepted
+- **Status:**
+    - Accepted
 - **Context:**
     - Need for efficient resource management
     - Real-time performance requirements
     - System stability goals
     - Educational objectives
-- **Decision:** Implement focused ML control system
-    - Binary decision making
-    - Microsecond response time
-    - Minimal resource footprint
-    - TensorFlow C API integration
+- **Decision:**
+    - Implement focused ML control system
+        - Binary decision making
+        - Microsecond response time
+        - Minimal resource footprint
+        - TensorFlow C API integration
 - **Consequences:**
     - Positive: Fast decision making
     - Positive: Resource efficient
     - Positive: Clear purpose
     - Negative: Limited ML scope
+
+## ADR-004: Memory Management Strategy
+- **Status:** Accepted
+- **Context:**
+    - Performance critical operations
+    - Resource optimization needs
+    - Educational clarity requirements
+    - Cross-platform considerations
+- **Decision:**
+    - Implement custom memory management
+        - Pool-based allocation
+        - Resource recycling
+        - Explicit deallocation
+        - Memory monitoring
+- **Consequences:**
+    - Positive: Performance control
+    - Positive: Resource efficiency
+    - Positive: Clear memory patterns
+    - Negative: Implementation complexity
