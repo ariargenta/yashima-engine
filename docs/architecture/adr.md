@@ -114,3 +114,43 @@ graph TD
     - Positive: Performance scaling
     - Positive: Resource utilization
     - Negative: Synchronization complexity
+
+## ADR-006: Build System Architecture
+- **Status:**
+    - Accepted
+- **Context:**
+    - Cross-platform requirements
+    - Build reproducibility
+    - Development workflow
+    - Educational accessibility
+- **Decision:**
+    - Implement CMake-based build system
+        - Platform-independent build
+        - Dependency management
+        - Configuration control
+        - Testing integration
+- **Consequences:**
+    - Positive: Cross-platform support
+    - Positive: Build consistency
+    - Positive: Dependency handling
+    - Negative: Build system complexity
+
+## ADR-007: Testing Strategy
+- **Status:**
+    - Accepted
+- **Context:**
+    - Quality assurance needs
+    - Educational requirements
+    - Performance validation
+    - Cross-platform verification
+- **Decision:**
+    - Implement comprehensive testing
+        - Unit tests for components
+        - Integration tests for systems
+        - Performance benchmarks
+        - Educational examples
+- **Consequences:**
+    - Positive: Quality assurance
+    - Positive: Learning validation
+    - Positive: Performance verification
+    - Negative: Testing overhead
