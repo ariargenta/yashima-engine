@@ -107,10 +107,53 @@ Additional Constraints:
 
 ### 1.5 Document Conventions
 #### 1.5.1 Technical Specifications
-- All memory sizes in powers of 2
-- Time measurements in milliseconds
-- Performance metrics in frames per second
-- Resource limits as explicit constants
+##### 1.5.1.1 Memory Specifications
+| Type | Convention | Example |
+|:----:|:----------:|:-------:|
+| Memory Sizes | Powers of 2 | $2^{10}$ bytes (1KB) |
+| Buffer Alignments | Multiple of cache line | 64 bytes |
+| Memory Pools | Powers of 2 | $2^{20}$ bytes (1MB) |
+| Stack Allocations | Fixed size blocks | 4KB blocks |
+
+##### 1.5.1.2 Time Measurements
+| Metric | Unit | Precision |
+|:------:|:----:|:---------:|
+| Frame Time | Milliseconds (ms) | 2 decimal places |
+| CPU Operations | Microseconds (μs) | 1 decimal place |
+| GPU Operations | Milliseconds (ms) | 3 decimal places |
+| ML Inference | Microseconds (μs) | 1 decimal place |
+
+##### 1.5.1.3 Performance Metrics
+| Metric | Notation | Unit |
+|:------:|:--------:|:----:|
+| Frame Rate | FPS | Frames per second |
+| Memory Bandwidth | GB/s | Gigabytes per second |
+| CPU Usage | % | Percentage of total |
+| GPU Utilization | % | Percentage of total |
+
+##### 1.5.1.4 Resource Limits
+| Resource | Specification | Format |
+|:--------:|:------------:|:-------:|
+| Maximum Vertices | $2^{20}$ | Scientific notation |
+| Buffer Sizes | Powers of 2 | Binary prefix |
+| Thread Counts | Powers of 2 | Decimal |
+| Queue Depths | Powers of 2 | Decimal |
+
+##### 1.5.1.5 Numerical Representations
+| Type | Format | Precision |
+|:----:|:------:|:---------:|
+| Floating Point | IEEE 754 | 32/64-bit |
+| Fixed Point | Q Format | 16.16 |
+| Integers | Two's Complement | 32/64-bit |
+| Vectors | SIMD Aligned | 128/256-bit |
+
+##### 1.5.1.6 Documentation Format
+| Element | Convention | Example |
+|:-------:|:----------:|:-------:|
+| Constants | UPPER_SNAKE_CASE | MAX_BUFFER_SIZE |
+| Variables | camelCase | frameCount |
+| Functions | PascalCase | RenderFrame |
+| Namespaces | lowercase | graphics |
 
 #### 1.5.2 Implementation Notes
 - Code examples in C++17 standard
