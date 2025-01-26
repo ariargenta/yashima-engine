@@ -1,4 +1,4 @@
-# TECHNICAL DESIGN DOCUMENT
+﻿# TECHNICAL DESIGN DOCUMENT
 ## Document Control
 | Version | Date | Author | Changes |
 |:-------:|:----:|:------:|:-------:|
@@ -49,7 +49,6 @@ The following areas are not covered:
 | SPIR-V Specification | 1.5 | Shader compilation |
 
 ### 1.4 Definitions and Acronyms
-
 #### 1.4.1 Technical Terms
 | Term | Definition |
 |:----:|:----------:|
@@ -59,15 +58,58 @@ The following areas are not covered:
 | GPU | Graphics Processing Unit |
 
 #### 1.4.2 Project-Specific Terms
-| Term | Definition |
-|:----:|:----------:|
-| Stoker | ML-based decision system |
-| Governor | Resource management system |
-| Resource | Any managed system asset |
-| Pipeline | Graphics processing sequence |
+| Term | Definition | Mathematical Basis |
+|:----:|:----------:|:------------------:|
+| Flow Controller | Binary state optimization system that manages system throughput based on performance metrics | Control theory: Binary State functions, O(1) decision time |
+| Resource Optimizer | Continuous feedback system that manages resource allocation based on system load | Optimization theory: Constrained optimization, O(n) resource management |
+| Resource | Quantifiable system asset (memory, compute time, bandwith) subject to conservation laws | Resource flow theory: Conservation equations |
+| Pipeline | Directed acyclic graph of processing stages with defined input/output relationships | Graph tehory: DAG Processing, O(n) stage progression |
+
+##### 1.4.2.1 Mathematical Foundation
+Each term maps to fundamental mathematical concepts:
+
+1. **Flow Controller**
+   - Mathematical basis: Binary state functions
+   - Key concept: Discrete optimization
+   - Complexity: O(1) decision making
+   - Domain: Control theory
+
+2. **Resource Optimizer**
+   - Mathematical basis: Continuous optimization
+   - Key concept: Gradient-based control
+   - Complexity: O(n) resource tracking
+   - Domain: Optimization theory
+
+3. **Resource Management**
+   - Mathematical basis: Conservation equations
+   - Key concept: Flow constraints
+   - Complexity: O(log n) allocation
+   - Domain: Flow networks
+
+4. **Pipeline Processing**
+   - Mathematical basis: Graph theory
+   - Key concept: Sequential dependencies
+   - Complexity: O(n) processing
+   - Domain: DAG processing
+
+##### 1.4.2.2 Theoretical Framework
+| Concept | Mathematical Model | Performance Characteristics |
+|:-------:|:------------------:|:---------------------------:|
+| Flow Control | $f(x) \in \{0,1\}$  |  $\mathcal{O}(1)$ decision complexity  |
+| Resource Optimization | $f: \mathbb{R}^n \rightarrow \mathbb{R}$ | $\mathcal{O}(n)$ optimization complexity |
+| Resource Flow |  $\sum\limits_{i=1}^n \text{in}
+_
+i = \sum\limits
+_
+{i=1}^n \text{out}_i$ | $\mathcal{O}(\log n)$ allocation complexity |
+| Pipeline Execution | $G(V,E): V = \{v_1,...,v_n\}$  | $\mathcal{O}(n)$ processing complexity  |
+
+Additional Constraints:
+- Flow Conservation: $\frac{\partial R}{\partial t} + \nabla \cdot \mathbf{F} = 0$
+- Resource Bounds: $0 \leq R_i \leq R_{max}, \forall i \in \{1,...,n\}$
+- Pipeline Ordering: $(v_i, v_j) \in E \implies i < j$
 
 ### 1.5 Document Conventions
-
 #### 1.5.1 Technical Specifications
 - All memory sizes in powers of 2
 - Time measurements in milliseconds
