@@ -114,6 +114,8 @@ Additional Constraints:
 | Buffer Alignments | Multiple of cache line | 64 bytes |
 | Memory Pools | Powers of 2 | $2^{20}$ bytes (1MB) |
 | Stack Allocations | Fixed size blocks | 4KB blocks |
+| VRAM Buffers | Multiple of 256 | 256 bytes |
+| Uniform Data | Multiple of 16 | 16 bytes |
 
 ##### 1.5.1.2 Time Measurements
 | Metric | Unit | Precision |
@@ -122,6 +124,8 @@ Additional Constraints:
 | CPU Operations | Microseconds (μs) | 1 decimal place |
 | GPU Operations | Milliseconds (ms) | 3 decimal places |
 | ML Inference | Microseconds (μs) | 1 decimal place |
+| Memory Transfer | Microseconds (μs) | 2 decimal place |
+| State Updates | Nanoseconds (ns) | 0 decimal places |
 
 ##### 1.5.1.3 Performance Metrics
 | Metric | Notation | Unit |
