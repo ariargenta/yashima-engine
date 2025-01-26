@@ -60,10 +60,10 @@ The following areas are not covered:
 #### 1.4.2 Project-Specific Terms
 | Term | Definition | Mathematical Basis |
 |:----:|:----------:|:------------------:|
-| Flow Controller | Binary state optimization system that manages system throughput based on performance metrics | Control theory: Binary State functions, O(1) decision time |
-| Resource Optimizer | Continuous feedback system that manages resource allocation based on system load | Optimization theory: Constrained optimization, O(n) resource management |
+| Flow Controller | Binary state optimization system that manages system throughput based on performance metrics | Control theory: Binary State functions, $\mathcal{O}(1)$ decision time |
+| Resource Optimizer | Continuous feedback system that manages resource allocation based on system load | Optimization theory: Constrained optimization, $\mathcal{O}(n)$ resource management |
 | Resource | Quantifiable system asset (memory, compute time, bandwith) subject to conservation laws | Resource flow theory: Conservation equations |
-| Pipeline | Directed acyclic graph of processing stages with defined input/output relationships | Graph tehory: DAG Processing, O(n) stage progression |
+| Pipeline | Directed acyclic graph of processing stages with defined input/output relationships | Graph tehory: DAG Processing, $\mathcal{O}(n)$ stage progression |
 
 ##### 1.4.2.1 Mathematical Foundation
 Each term maps to fundamental mathematical concepts:
