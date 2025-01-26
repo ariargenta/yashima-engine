@@ -6,7 +6,79 @@
 
 ## 1. Introduction
 ### 1.1 Purpose
-This document provides the technical design specifications for the Yashima Engine, translating architectural decisions into concrete implementation guidelines.
+This Technical Design Document provides detailed specifications for implementing the Yashima Engine, a graphics engine focused on educational accessibility and resource optimization. The document translates high-level architectural decisions into concrete technical specifications and implementation guidelines.
+
+The primary objectives of this document are to:
+- Define technical specifications for each system component
+- Establish interface contracts between components
+- Specify data structures and algorithms
+- Document performance requirements and constraints
+- Provide implementation guidance for developers
+
+### 1.2 Scope
+#### 1.2.1 In Scope
+The document covers technical specifications for:
+- ML-based resource control system
+- Graphics pipeline implementation using Vulkan
+- Resource management and optimization
+- Platform abstraction layer
+- Performance monitoring system
+- Educational debugging tools
+
+#### 1.2.2 Out of Scope
+The following areas are not covered:
+- Application-specific implementations
+- Game engine features
+- Content creation tools
+- Asset pipeline details
+- Platform-specific optimizations
+
+### 1.3 References
+#### 1.3.1 Internal Documents
+| Document | Version | Purpose |
+|:--------:|:-------:|:-------:|
+| Vision and Scope | 1.0 | Project overview and objectives |
+| Architecture Decision Records | 1.0 | Architectural decisions and rationale |
+| API Documentation | WIP | Interface specifications |
+
+#### 1.3.2 External References
+| Reference | Version | Usage |
+|:---------:|:-------:|:-----:|
+| Vulkan Specification | 1.2 | Graphics API implementation |
+| TensorFlow C API | 2.x | ML system implementation |
+| SPIR-V Specification | 1.5 | Shader compilation |
+
+### 1.4 Definitions and Acronyms
+
+#### 1.4.1 Technical Terms
+| Term | Definition |
+|:----:|:----------:|
+| ML | Machine Learning |
+| TDD | Technical Design Document |
+| API | Application Programming Interface |
+| GPU | Graphics Processing Unit |
+
+#### 1.4.2 Project-Specific Terms
+| Term | Definition |
+|:----:|:----------:|
+| Stoker | ML-based decision system |
+| Governor | Resource management system |
+| Resource | Any managed system asset |
+| Pipeline | Graphics processing sequence |
+
+### 1.5 Document Conventions
+
+#### 1.5.1 Technical Specifications
+- All memory sizes in powers of 2
+- Time measurements in milliseconds
+- Performance metrics in frames per second
+- Resource limits as explicit constants
+
+#### 1.5.2 Implementation Notes
+- Code examples in C++17 standard
+- API definitions in C
+- Shader code in SPIR-V assembly
+- Configuration in YAML
 
 ### 1.2 Scope
 - Core engine components
