@@ -134,6 +134,10 @@ Additional Constraints:
 | Memory Bandwidth | GB/s | Gigabytes per second |
 | CPU Usage | % | Percentage of total |
 | GPU Utilization | % | Percentage of total |
+| Cache Hit Rate | % | Percentage of Hits |
+| ML Response Rate | Hz | Decisions per second |
+| Memory Fragmentation | % | Percentage of waste |
+| Pipeline Stalls | Count | Stalls per frame |
 
 ##### 1.5.1.4 Resource Limits
 | Resource | Specification | Format |
