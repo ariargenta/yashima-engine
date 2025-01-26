@@ -146,6 +146,10 @@ Additional Constraints:
 | Buffer Sizes | Powers of 2 | Binary prefix |
 | Thread Counts | Powers of 2 | Decimal |
 | Queue Depths | Powers of 2 | Decimal |
+| Batch Size | $2^{10}$ | Scientific notation |
+| Descriptor Sets | $2^{8}$ | Scientific notation |
+| Memory Pools | $2^{4}$ | Scientific notation |
+| Command Lists | $2^{6}$ | Scientific notation |
 
 ##### 1.5.1.5 Numerical Representations
 | Type | Format | Precision |
@@ -154,6 +158,10 @@ Additional Constraints:
 | Fixed Point | Q Format | 16.16 |
 | Integers | Two's Complement | 32/64-bit |
 | Vectors | SIMD Aligned | 128/256-bit |
+| Matrix | Column Major | 4x4 float |
+| Quaternions | Unit Length | 32-bit x4 |
+| Normalized | [0, 1] or [-1, 1] | 32-bit |
+| Half Float | IEEE 754 | 16-bit |
 
 ##### 1.5.1.6 Documentation Format
 | Element | Convention | Example |
@@ -162,6 +170,21 @@ Additional Constraints:
 | Variables | camelCase | frameCount |
 | Functions | PascalCase | RenderFrame |
 | Namespaces | lowercase | graphics |
+| Types | PascalCase | VertexBuffer |
+| Interfaces | IPascalCase | IRenderer |
+| Enums | PascalCase | RenderState |
+| Templates | TPascalCase | TResourceHandle |
+| Structs | PascalCase | VertexData |
+| Class Members | m_camelCase | m_bufferSize |
+| Static Members | s_camelCase | s_instanceCount |
+| Global Variables | g_camelCase | g_renderContext |
+| Enum Values | k_PascalCase | k_MaxBufferSize |
+| Boolean Variables | camelCase | isValid, hasData |
+| Pointer Variables | pCamelCase | pBuffer |
+| Reference Parameters | rCamelCase | rContext |
+| Function Parameters | camelCase | bufferSize |
+| Local Variables | camelCase | localIndex |
+| Template Parameters | T_PascalCase | T_DataType |
 
 #### 1.5.2 Implementation Notes
 ##### 1.5.2.1 Code Standards
