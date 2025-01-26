@@ -97,11 +97,7 @@ Each term maps to fundamental mathematical concepts:
 |:-------:|:------------------:|:---------------------------:|
 | Flow Control | $f(x) \in \{0,1\}$  |  $\mathcal{O}(1)$ decision complexity  |
 | Resource Optimization | $f: \mathbb{R}^n \rightarrow \mathbb{R}$ | $\mathcal{O}(n)$ optimization complexity |
-| Resource Flow |  $\sum\limits_{i=1}^n \text{in}
-_
-i = \sum\limits
-_
-{i=1}^n \text{out}_i$ | $\mathcal{O}(\log n)$ allocation complexity |
+| Resource Flow |  $\sum\limits_{i=1}^n \text{in}_i = \sum\limits_{i=1}^n \text{out}_i$ | $\mathcal{O}(\log n)$ allocation complexity |
 | Pipeline Execution | $G(V,E): V = \{v_1,...,v_n\}$  | $\mathcal{O}(n)$ processing complexity  |
 
 Additional Constraints:
