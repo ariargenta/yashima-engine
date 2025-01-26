@@ -156,10 +156,78 @@ Additional Constraints:
 | Namespaces | lowercase | graphics |
 
 #### 1.5.2 Implementation Notes
-- Code examples in C++17 standard
-- API definitions in C
-- Shader code in SPIR-V assembly
-- Configuration in YAML
+##### 1.5.2.1 Code Standards
+| Language | Standard | Constraints |
+|:--------:|:--------:|:----------:|
+| C | C17 | Strict aliasing rules |
+| C++ | C++17 | No RTTI, limited exceptions |
+| SPIR-V | 1.5 | Vulkan compatibility |
+| Python | 3.8+ | Build scripts only |
+
+##### 1.5.2.2 API Conventions
+| Component | Style | Example |
+|:---------:|:-----:|:-------:|
+| Public Functions | `[[nodiscard]]` | `[[nodiscard]] Result Initialize();` |
+| Error Handling | Return codes | `ErrorCode DoOperation();` |
+| Resource Handles | Opaque types | `typedef struct Resource_T* ResourceHandle;` |
+| Constants | Static constexpr | `static constexpr size_t kMaxSize = 1024;` |
+
+##### 1.5.2.3 Documentation Requirements
+| Element | Format | Purpose |
+|:-------:|:------:|:-------:|
+| Functions | Doxygen | API documentation |
+| Classes | Markdown | Implementation details |
+| Examples | Literate programming | Educational value |
+| Algorithms | Pseudocode + LaTeX | Mathematical foundation |
+
+##### 1.5.2.4 Critical Paths
+```mermaid
+graph TD
+    A[Hot Path] --> B{Performance Critical?}
+    B -->|Yes| C[Inline]
+    B -->|No| D[Standard]
+    C --> E[Document Reasoning]
+```
+
+##### 1.5.2.5 Memory Management
+| Context | Strategy | Documentation |
+|:-------:|:--------:|:-------------:|
+| Hot Path | Stack allocation | Performance critical |
+| Resources | Pool allocation | Resource lifetime |
+| Temporary | Arena allocation | Frame scope |
+| System | RAII patterns | Ownership model |
+
+##### 1.5.2.6 Thread Safety
+| Component | Guarantee | Documentation |
+|:---------:|:---------:|:-------------:|
+| Public API | Thread-safe | Explicit notation |
+| Internal | Implementation defined | Document assumptions |
+| Resources | External sync | Mark requirements |
+| Callbacks | Main thread only | State requirements |
+
+##### 1.5.2.7 Performance Annotations
+| Type | Annotation | Example |
+|:----:|:----------:|:-------:|
+| Hot Path | [[likely]] | if (likely(condition)) |
+| Cold Path | [[unlikely]] | if (unlikely(error)) |
+| Critical | [[optimize("O3")]] | Performance critical functions |
+| Alignment | [[align(64)]] | Cache line alignment |
+
+##### 1.5.2.8 Debug Support
+| Feature | Implementation | Purpose |
+|:-------:|:--------------:|:-------:|
+| Assertions | Static analysis | Invariant checking |
+| Logging | Ring buffer | Performance monitoring |
+| Profiling | Instrumentation | Hot path analysis |
+| Validation | Layer system | Correctness verification |
+
+##### 1.5.2.9 Build Configuration
+| Mode | Features | Use Case |
+|:----:|:--------:|:-------:|
+| Debug | Full validation | Development |
+| Release | No debug | Production |
+| Profile | Instrumented | Performance analysis |
+| Test | Coverage | Validation |
 
 ### 1.2 Scope
 - Core engine components
