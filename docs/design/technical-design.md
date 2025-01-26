@@ -71,25 +71,25 @@ Each term maps to fundamental mathematical concepts:
 1. **Flow Controller**
    - Mathematical basis: Binary state functions
    - Key concept: Discrete optimization
-   - Complexity: O(1) decision making
+   - Complexity: $\mathcal{O}(1)$ decision making
    - Domain: Control theory
 
 2. **Resource Optimizer**
    - Mathematical basis: Continuous optimization
    - Key concept: Gradient-based control
-   - Complexity: O(n) resource tracking
+   - Complexity: $\mathcal{O}(n)$ resource tracking
    - Domain: Optimization theory
 
 3. **Resource Management**
    - Mathematical basis: Conservation equations
    - Key concept: Flow constraints
-   - Complexity: O(log n) allocation
+   - Complexity: $\mathcal{O}(log n)$ allocation
    - Domain: Flow networks
 
 4. **Pipeline Processing**
    - Mathematical basis: Graph theory
    - Key concept: Sequential dependencies
-   - Complexity: O(n) processing
+   - Complexity: $\mathcal{O}(n)$ processing
    - Domain: DAG processing
 
 ##### 1.4.2.2 Theoretical Framework
@@ -97,7 +97,7 @@ Each term maps to fundamental mathematical concepts:
 |:-------:|:------------------:|:---------------------------:|
 | Flow Control | $f(x) \in \{0,1\}$  |  $\mathcal{O}(1)$ decision complexity  |
 | Resource Optimization | $f: \mathbb{R}^n \rightarrow \mathbb{R}$ | $\mathcal{O}(n)$ optimization complexity |
-| Resource Flow |  $\sum\limits_{i=1}^n \text{in}_i = \sum\limits_{i=1}^n \text{out}_i$ | $\mathcal{O}(\log n)$ allocation complexity |
+| Resource Flow | \sum\limits_{i=1}^n R_{in,i}(t) = \sum\limits_{i=1}^n R_{out,i}(t), \quad \forall t \geq 0 | $\mathcal{O}(\log n)$ allocation complexity |
 | Pipeline Execution | $G(V,E): V = \{v_1,...,v_n\}$  | $\mathcal{O}(n)$ processing complexity  |
 
 Additional Constraints:
