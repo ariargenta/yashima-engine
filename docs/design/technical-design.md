@@ -200,12 +200,16 @@ Additional Constraints:
 | JSON | RFC 8259 | Configuration files | Data format |
 
 ##### 1.5.2.2 API Conventions
-| Component | Style | Example |
-|:---------:|:-----:|:-------:|
-| Public Functions | `[[nodiscard]]` | `[[nodiscard]] Result Initialize();` |
-| Error Handling | Return codes | `ErrorCode DoOperation();` |
-| Resource Handles | Opaque types | `typedef struct Resource_T* ResourceHandle;` |
-| Constants | Static constexpr | `static constexpr size_t kMaxSize = 1024;` |
+| Component | Style | Example | Rationale |
+|:---------:|:-----:|:-------:|:---------:|
+| Public Functions | `[[nodiscard]]` | `[[nodiscard]] Result Initialize();` | Enforce error checking |
+| Error Handling | Return codes | `ErrorCode DoOperation();` | Deterministic error handling |
+| Resource Handles | Opaque types | `typedef struct Resource_T* ResourceHandle;` | Encapsulation |
+| Constants | Static constexpr | `static constexpr size_t kMaxSize = 1024;` | Compile-time evaluation |
+| Callbacks | Function pointers | `typedef void (*UpdateFn)(void* userData);` | C compatibility |
+| Interfaces | Pure virtual | `virtual void Update() = 0;` | Plugin architecture |
+| Memory Allocation | Custom allocators | `void* Allocate(size_t size, void* userData);` | Memory control |
+| State Changes | State machines | `enum class State : uint8_t {};` | Predictable behavior |
 
 ##### 1.5.2.3 Documentation Requirements
 | Element | Format | Purpose |
