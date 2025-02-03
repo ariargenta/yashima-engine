@@ -302,10 +302,55 @@ graph TD
 
 | Path Type | Threshold | Action | Rationale |
 |:---------:|:---------:|:------:|:---------:|
-| Frame Critical | 16ms budget | Inline + SIMD | Frame timing requirement for 60 FPS |
+| Frame Critical | 16ms budget | Inline + SIMD | Timing requirement for 60 FPS |
 | Memory Critical | Cache line | Align + Pool | Cache coherency and memory access patterns |
 | ML Critical | 100μs budget | Optimize | Real-time decision making window |
 | Resource Critical | 1ms budget | Batch | Resource state management overhead |
+
+- Frame Critical
+    - **Definition**: Operations that directly impact frame rendering time
+    - **Examples**:
+        * Vertex transformation
+        * Draw call submission
+        * State changes
+    - **Impact**:
+        * Direct effect on FPS
+        * User experience
+        * System responsiveness
+
+- Memory Critical
+    - **Definition**: Operations affecting memory access patterns
+    - **Examples**:
+        * Resource allocation
+        * Buffer updates
+        * Texture uploads
+    - **Impact**:
+        * Cache performance
+        * Memory bandwidth
+        * System latency
+
+- ML Critical
+    - **Definition**: Operations in ML decision loop
+    - **Examples**:
+        * State evaluation
+        * Resource prediction
+        * Control decisions
+    - **Impact**:
+        * System stability
+        * Resource efficiency
+        * Response time
+
+- Resource Critical
+    - **Definition**: Operations managing system resources
+    - **Examples**:
+        * Buffer management
+        * Memory pools
+        * State tracking
+    - **Impact**:
+        * Resource availability
+        * System overhead
+        * Overall performance
+
 
 4. Documentation Requirements
 
@@ -316,13 +361,111 @@ graph TD
 | Trade-offs | Costs & Benefits | Decision Record | Analysis matrix |
 | Validation | Tests & Results | Verification | Test reports |
 
+- Performance Data
+    - **Required Metrics**:
+        * Baseline performance
+        * Optimized performance
+        * Resource utilization
+        * System impact
+    - **Documentation Format**:
+        * Performance tables
+        * Comparison graphs
+        * Timeline analysis
+        * Resource usage charts
+
+- Optimization Strategy
+    - **Required Elements**:
+        * Problem analysis
+        * Solution approach
+        * Implementation method
+        * Expected outcomes
+    - **Documentation Format**:
+        * Technical description
+        * Code examples
+        * Algorithm analysis
+        * Performance models
+
+- Trade-offs
+    - **Required Analysis**:
+        * Performance gains
+        * Resource costs
+        * Complexity impact
+        * Maintenance implications
+    - **Documentation Format**:
+        * Decision matrix
+        * Cost-benefit analysis
+        * Risk assessment
+        * Long-term impact
+
+- Validation
+    - **Required Evidence**:
+        * Performance tests
+        * Stress tests
+        * Edge cases
+        * System impact
+    - **Documentation Format**:
+        * Test reports
+        * Performance data
+        * Validation criteria
+        * Success metrics
+
 ##### 1.5.2.6 Memory Management
-| Context | Strategy | Documentation |
-|:-------:|:--------:|:-------------:|
-| Hot Path | Stack allocation | Performance critical |
-| Resources | Pool allocation | Resource lifetime |
-| Temporary | Arena allocation | Frame scope |
-| System | RAII patterns | Ownership model |
+| Context | Strategy | Documentation | Constraints |
+|:-------:|:--------:|:-------------:|:-----------:|
+| Hot Path | Stack allocation | Performance critical | Fixed size, deterministic |
+| Resources | Pool allocation | Resource lifetime | Fragmentation managed |
+| Temporary | Arena allocation | Frame scope | Reset each frame |
+| System | RAII patterns | Ownership model | Explicit lifetime |
+
+###### 1.5.2.6.1 Memory Hierarchy
+```mermaid
+graph TD
+    A[Memory Request] --> B{Hot Path?}
+    B -->|Yes| C[Stack Allocation]
+    B -->|No| D{Resource?}
+    D -->|Yes| E[Pool Allocation]
+    D -->|No| F{Temporary?}
+    F -->|Yes| G[Arena Allocation]
+    F -->|No| H[RAII System]
+```
+
+###### 1.5.2.6.2 Constraints and Limits
+1. Size Constrains
+
+| Allocation Type | Initial Size | Maximum Size | Growth Policy |
+|:---------------:|:------------:|:------------:|:-------------:|
+| Stack | 1MB/thread | Fixed | None |
+| Pool | 16MB | 256MB | Double |
+| Arena | 4MB | 64MB | 2MB blocks |
+| System | As needed | System RAM | Dynamic |
+
+2. Alignment Requirements
+
+| Resource | Type | Alignment | Justification |
+|:--------:|:----:|:---------:|:-------------:|
+| Hot Path | 64 bytes | Cache line |
+| Resources | 256 bytes | GPU access |
+| Temporary | 16 bytes | SIMD ops |
+| System | 8 bytes | CPU natural |
+
+###### 1.5.2.6.3 Performance Characteristics
+1. Operation Costs
+
+| Strategy | Allocation | Deallocation | Fragmentation |
+|:--------:|:----------:|:------------:|:-------------:|
+| Stack | $\mathcal{O}(1)$ | $\mathcal{O}(1)$ | None |
+| Pool | $\mathcal{O}(1)$ | $\mathcal{O}(1)$ | Managed |
+| Arena | $\mathcal{O}(1)$ | Bulk | None |
+| RAII | $\mathcal{O}(n)$ | $\mathcal{O}(1)$ | System |
+
+2. Monitoring Thresholds
+
+| Aspect | Metric | Threshold | Action |
+|:------:|:------:|:---------:|:------:|
+| Stack | Peak depth | 75% | Warning |
+| Pool | Fragmentation | 5% | Defrag |
+| Arena | Growth/frame | 2x baseline | Investigate |
+| System | Usage trend | Upward | Leak check |
 
 ##### 1.5.2.7 Thread Safety
 | Component | Guarantee | Documentation |
