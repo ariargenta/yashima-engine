@@ -188,12 +188,16 @@ Additional Constraints:
 
 #### 1.5.2 Implementation Notes
 ##### 1.5.2.1 Code Standards
-| Language | Standard | Constraints |
-|:--------:|:--------:|:----------:|
-| C | C17 | Strict aliasing rules |
-| C++ | C++17 | No RTTI, limited exceptions |
-| SPIR-V | 1.5 | Vulkan compatibility |
-| Python | 3.8+ | Build scripts only |
+| Language | Standard | Constraints | Rationale |
+|:--------:|:--------:|:-----------:|:---------:|
+| C | C17 | Strict aliasing rules | Low-level control |
+| C++ | C++17 | No RTTI, limited exceptions | Performance critical |
+| SPIR-V | 1.5 | Vulkan compatibility | Shader compilation |
+| Python | 3.8+ | Build scripts only | Build automation |
+| GLSL | 4.60 | Vulkan compatibility | Shader source |
+| CMake | 3.20+ | Cross-platform support | Build system |
+| Markdown | GitHub Flavored | Documentation | Project docs |
+| JSON | RFC 8259 | Configuration files | Data format |
 
 ##### 1.5.2.2 API Conventions
 | Component | Style | Example |
