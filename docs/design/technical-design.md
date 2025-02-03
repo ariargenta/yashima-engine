@@ -468,12 +468,49 @@ graph TD
 | System | Usage trend | Upward | Leak check |
 
 ##### 1.5.2.7 Thread Safety
-| Component | Guarantee | Documentation |
-|:---------:|:---------:|:-------------:|
-| Public API | Thread-safe | Explicit notation |
-| Internal | Implementation defined | Document assumptions |
-| Resources | External sync | Mark requirements |
-| Callbacks | Main thread only | State requirements |
+| Component | Guarantee | Documentation | Verification |
+|:---------:|:---------:|:-------------:|:------------:|
+| Public API | Thread-safe | Explicit notation | Runtime check |
+| Internal | Implementation defined | Document assumptions | Static analysis |
+| Resources | External sync | Mark requirements | Lock tracking |
+| Callbacks | Main thread only | State requirements | Assert check |
+
+###### 1.5.2.7.1 Thread Safety Categories
+1. Public API Requirements
+
+| Access Pattern | Syncrhonization | Validation |
+|:--------------:|:---------------:|:---------:|
+| Concurrent read | Lock-free | Performance counter |
+| Exclusive write | Mutex protected | Deadlock detection |
+| Resource access | Atomic operations | Race detector |
+| State changes | Sequential consistency | State validator |
+
+2. Internal Implementation
+
+| Context | Stategy | Verification |
+|:-------:|:-------:|:------------:|
+| Hot path | Lock-free | Stress test |
+| Resource update | Fine-grained locks | Lock order |
+| State transition | Sequential | State machine |
+| Data access | Thread local | Memory order |
+
+3. Resource Management
+
+| Operation | Syncronization method | Requirement |
+|:---------:|:---------------------:|:-----------:|
+| Allocation | External | Caller sync |
+| Access | Internal | Auto-managed |
+| Update | Hybrid | Documented |
+| Release | External | Caller sync |
+
+4. Callback Handling
+
+| Type | Thread Context | Validation |
+|:----:|:--------------:|:----------:|
+| Update | Main thread | Assert |
+| Event | Worker thread | Queue check |
+| Resource | Owner thread | Thread ID |
+| System | Any thread | Safety level |
 
 ##### 1.5.2.8 Performance Annotations
 | Type | Annotation | Example |
