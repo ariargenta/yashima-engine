@@ -300,21 +300,21 @@ graph TD
 
 3. Optimization Categories
 
-| Path Type | Threshold | Action |
-|:---------:|:---------:|:------:|
-| Frame Critical | 16ms budget | Inline + SIMD |
-| Memory Critical | Cache line | Align + Pool |
-| ML Critical | 100μs budget | Optimize |
-| Resource Critical | 1ms budget | Batch |
+| Path Type | Threshold | Action | Rationale |
+|:---------:|:---------:|:------:|:---------:|
+| Frame Critical | 16ms budget | Inline + SIMD | Frame timing requirement for 60 FPS |
+| Memory Critical | Cache line | Align + Pool | Cache coherency and memory access patterns |
+| ML Critical | 100μs budget | Optimize | Real-time decision making window |
+| Resource Critical | 1ms budget | Batch | Resource state management overhead |
 
 4. Documentation Requirements
 
-| Aspect | Content | Purpose |
-|:------:|:-------:|:-------:|
-| Performance Data | Metrics & Benchmarks | Justification |
-| Optimization Strategy | Approach & Methods | Implementation |
-| Trade-offs | Costs & Benefits | Decision Record |
-| Validation | Tests & Results | Verification |
+| Aspect | Content | Purpose | Format |
+|:------:|:-------:|:-------:|:------:|
+| Performance Data | Metrics & Benchmarks | Justification | Tables + Graphs |
+| Optimization Strategy | Approach & Methods | Implementation | Technical description |
+| Trade-offs | Costs & Benefits | Decision Record | Analysis matrix |
+| Validation | Tests & Results | Verification | Test reports |
 
 ##### 1.5.2.6 Memory Management
 | Context | Strategy | Documentation |
