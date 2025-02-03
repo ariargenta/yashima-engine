@@ -223,8 +223,7 @@ Additional Constraints:
 | Tutorials | Markdown + Code | Learning path | Steps, Code, Results, Exercises |
 | Architecture | Mermaid + Markdown | System design | Components, Flow, Decisions |
 
-##### 1.5.2.4 Documentation Requirements
-###### Documentation Integration
+##### 1.5.2.4 Documentation Integration
 1. **Documentation Scope**
    - Source code documentation
      * API interfaces
@@ -276,10 +275,14 @@ Additional Constraints:
 ##### 1.5.2.5 Critical Paths
 ```mermaid
 graph TD
-    A[Hot Path] --> B{Performance Critical?}
-    B -->|Yes| C[Inline]
-    B -->|No| D[Standard]
-    C --> E[Document Reasoning]
+    A[Code Path Analysis] --> B{Performance Critical?}
+    B -->|Yes| C[Profile & Measure]
+    B -->|No| D[Standard Implementation]
+    C --> E{Optimization Required?}
+    E -->|Yes| F[Inline + Optimize]
+    E -->|No| D
+    F --> G[Document Decision]
+    G --> H[Performance Validation]
 ```
 
 ##### 1.5.2.6 Memory Management
