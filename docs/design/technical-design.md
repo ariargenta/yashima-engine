@@ -214,7 +214,7 @@ Additional Constraints:
 ##### 1.5.2.3 Documentation Requirements
 | Element | Format | Purpose | Required Fields |
 |:-------:|:------:|:-------:|:---------------:|
-| Functions | Doxygen | API documentation | @brief, @param, @return, @note, @see |
+| Functions | Doxygen | API documentation | `@brief, @param, @return, @note, @see` |
 | Classes | Markdown | Implementation details | Overview, Methods, Examples, Limitations |
 | Examples | Literate programming | Educational value | Context, Code, Output, Analysis |
 | Algorithms | Pseudocode + LaTeX | Mathematical foundation | Complexity, Proof, Constrains |
@@ -299,6 +299,7 @@ graph TD
     - Affects multiple systems
 
 3. Optimization Categories
+
 | Path Type | Threshold | Action |
 |:---------:|:---------:|:------:|
 | Frame Critical | 16ms budget | Inline + SIMD |
@@ -307,6 +308,7 @@ graph TD
 | Resource Critical | 1ms budget | Batch |
 
 4. Documentation Requirements
+
 | Aspect | Content | Purpose |
 |:------:|:-------:|:-------:|
 | Performance Data | Metrics & Benchmarks | Justification |
