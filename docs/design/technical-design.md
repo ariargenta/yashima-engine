@@ -512,6 +512,41 @@ graph TD
 | Resource | Owner thread | Thread ID |
 | System | Any thread | Safety level |
 
+###### 1.5.2.7.2 Syncronization Methods
+1. Priority Order
+    - Lock-Free operations
+    - Atomic operations
+    - Fine-grained locks
+    - Coarse-grained locks
+
+2. Critical Section Management
+
+| Section | Strategy | Max Duration |
+|:-------:|:--------:|:------------:|
+| Hot path | Lock-free | 0μs |
+| Resource | Fine lock | 100μs |
+| State | Coarse lock | 1ms |
+| System | Global lock | 10ms |
+
+###### 1.5.2.7.3 Documentation Requirements
+1. Required Elements
+
+| Element | Content | Purpose |
+|:-------:|:-------:|:-------:|
+| Thread Safety | Safety level declaration | Define concurrency guarantees |
+| Sync method | Syncronization approach | Specify implementation strategy |
+| Performance | Syncronization impact | Document overhead |
+| Constraints | Usage requirements | Specify caller obligations |
+
+2. Safety Levels
+
+| Level | Meaning | Documentation |
+|:-----:|:-------:|:-------------:|
+| Thread-safe | Full concurrent access | No external sync needed |
+| External sync | Caller syncrhonization | Sync requirements |
+| Main thread | Main thread only | Thread context |
+| Implementation defined | Per-component basis | Specific details |
+
 ##### 1.5.2.8 Performance Annotations
 | Type | Annotation | Example |
 |:----:|:----------:|:-------:|
@@ -537,7 +572,7 @@ graph TD
 | Test | Coverage | Validation |
 
 ### 1.2 Scope
-- Core engine components
+- Core  engine components
 - Resource management system
 - ML control system
 - Graphics pipeline
