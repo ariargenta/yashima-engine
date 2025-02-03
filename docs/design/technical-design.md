@@ -224,7 +224,7 @@ Additional Constraints:
 | Architecture | Mermaid + Markdown | System design | Components, Flow, Decisions |
 
 ##### 1.5.2.4 Documentation Integration
-1. **Documentation Scope**
+1. Documentation Scope
    - Source code documentation
      * API interfaces
      * Implementation details
@@ -238,7 +238,7 @@ Additional Constraints:
      * Examples
      * Exercises
 
-2. **Documentation Organization**
+2. Documentation Organization
    - Source tree alignment
      * Documentation alongside code
      * Version-controlled documentation
@@ -248,7 +248,7 @@ Additional Constraints:
      * Detailed implementations
      * Educational resources
 
-3. **Documentation Standards**
+3. Documentation Standards
    - Format requirements
      * API documentation (Doxygen)
      * Technical documentation (Markdown)
@@ -262,7 +262,7 @@ Additional Constraints:
      * Educational review
      * Accessibility review
 
-4. **Documentation Maintenance**
+4. Documentation Maintenance
    - Update requirements
      * Code changes
      * API changes
@@ -284,6 +284,35 @@ graph TD
     F --> G[Document Decision]
     G --> H[Performance Validation]
 ```
+
+###### 1.5.2.5.1 Evaluation Criteria
+1. Performance Critical Definition
+    - Executed every frame
+    - Part of render pipeline
+    - Resource management operations
+    - Real-time ML decisions
+
+2. Measurement Thresholds
+    - Frame time impact > 1%
+    - Called > 1000 times/frame
+    - Memory operations > 1MB
+    - Affects multiple systems
+
+3. Optimization Categories
+| Path Type | Threshold | Action |
+|:---------:|:---------:|:------:|
+| Frame Critical | 16ms budget | Inline + SIMD |
+| Memory Critical | Cache line | Align + Pool |
+| ML Critical | 100μs budget | Optimize |
+| Resource Critical | 1ms budget | Batch |
+
+4. Documentation Requirements
+| Aspect | Content | Purpose |
+|:------:|:-------:|:-------:|
+| Performance Data | Metrics & Benchmarks | Justification |
+| Optimization Strategy | Approach & Methods | Implementation |
+| Trade-offs | Costs & Benefits | Decision Record |
+| Validation | Tests & Results | Verification |
 
 ##### 1.5.2.6 Memory Management
 | Context | Strategy | Documentation |
