@@ -212,14 +212,68 @@ Additional Constraints:
 | State Changes | State machines | `enum class State : uint8_t {};` | Predictable behavior |
 
 ##### 1.5.2.3 Documentation Requirements
-| Element | Format | Purpose |
-|:-------:|:------:|:-------:|
-| Functions | Doxygen | API documentation |
-| Classes | Markdown | Implementation details |
-| Examples | Literate programming | Educational value |
-| Algorithms | Pseudocode + LaTeX | Mathematical foundation |
+| Element | Format | Purpose | Required Fields |
+|:-------:|:------:|:-------:|:---------------:|
+| Functions | Doxygen | API documentation | @brief, @param, @return, @note, @see |
+| Classes | Markdown | Implementation details | Overview, Methods, Examples, Limitations |
+| Examples | Literate programming | Educational value | Context, Code, Output, Analysis |
+| Algorithms | Pseudocode + LaTeX | Mathematical foundation | Complexity, Proof, Constrains |
+| Interfaces | Doxygen + UML | Contract definition | Responsibilities, Guarantees, Usage |
+| Performance | Markdown + Graphs | Optimization guide | Metrics, Bottlenecks, Solutions |
+| Tutorials | Markdown + Code | Learning path | Steps, Code, Results, Exercises |
+| Architecture | Mermaid + Markdown | System design | Components, Flow, Decisions |
 
-##### 1.5.2.4 Critical Paths
+##### 1.5.2.4 Documentation Requirements
+###### Documentation Integration
+1. **Documentation Scope**
+   - Source code documentation
+     * API interfaces
+     * Implementation details
+     * Performance characteristics
+   - Technical documentation
+     * Architecture decisions
+     * System design
+     * Mathematical foundations
+   - Educational materials
+     * Tutorials
+     * Examples
+     * Exercises
+
+2. **Documentation Organization**
+   - Source tree alignment
+     * Documentation alongside code
+     * Version-controlled documentation
+     * Consistent structure
+   - Documentation hierarchy
+     * Core concepts
+     * Detailed implementations
+     * Educational resources
+
+3. **Documentation Standards**
+   - Format requirements
+     * API documentation (Doxygen)
+     * Technical documentation (Markdown)
+     * Mathematical content (LaTeX)
+   - Quality requirements
+     * Technical accuracy
+     * Completeness
+     * Educational value
+   - Review requirements
+     * Technical review
+     * Educational review
+     * Accessibility review
+
+4. **Documentation Maintenance**
+   - Update requirements
+     * Code changes
+     * API changes
+     * Feature additions
+   - Review process
+     * Technical accuracy
+     * Educational value
+     * Documentation quality
+
+##### 1.5.2.5 Critical Paths
 ```mermaid
 graph TD
     A[Hot Path] --> B{Performance Critical?}
@@ -228,7 +282,7 @@ graph TD
     C --> E[Document Reasoning]
 ```
 
-##### 1.5.2.5 Memory Management
+##### 1.5.2.6 Memory Management
 | Context | Strategy | Documentation |
 |:-------:|:--------:|:-------------:|
 | Hot Path | Stack allocation | Performance critical |
@@ -236,7 +290,7 @@ graph TD
 | Temporary | Arena allocation | Frame scope |
 | System | RAII patterns | Ownership model |
 
-##### 1.5.2.6 Thread Safety
+##### 1.5.2.7 Thread Safety
 | Component | Guarantee | Documentation |
 |:---------:|:---------:|:-------------:|
 | Public API | Thread-safe | Explicit notation |
@@ -244,7 +298,7 @@ graph TD
 | Resources | External sync | Mark requirements |
 | Callbacks | Main thread only | State requirements |
 
-##### 1.5.2.7 Performance Annotations
+##### 1.5.2.8 Performance Annotations
 | Type | Annotation | Example |
 |:----:|:----------:|:-------:|
 | Hot Path | [[likely]] | if (likely(condition)) |
@@ -252,7 +306,7 @@ graph TD
 | Critical | [[optimize("O3")]] | Performance critical functions |
 | Alignment | [[align(64)]] | Cache line alignment |
 
-##### 1.5.2.8 Debug Support
+##### 1.5.2.9 Debug Support
 | Feature | Implementation | Purpose |
 |:-------:|:--------------:|:-------:|
 | Assertions | Static analysis | Invariant checking |
@@ -260,7 +314,7 @@ graph TD
 | Profiling | Instrumentation | Hot path analysis |
 | Validation | Layer system | Correctness verification |
 
-##### 1.5.2.9 Build Configuration
+##### 1.5.2.10 Build Configuration
 | Mode | Features | Use Case |
 |:----:|:--------:|:-------:|
 | Debug | Full validation | Development |
