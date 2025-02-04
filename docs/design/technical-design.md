@@ -548,12 +548,50 @@ graph TD
 | Implementation defined | Per-component basis | Specific details |
 
 ##### 1.5.2.8 Performance Annotations
-| Type | Annotation | Example |
-|:----:|:----------:|:-------:|
-| Hot Path | [[likely]] | if (likely(condition)) |
-| Cold Path | [[unlikely]] | if (unlikely(error)) |
-| Critical | [[optimize("O3")]] | Performance critical functions |
-| Alignment | [[align(64)]] | Cache line alignment |
+| Type | Annotation | Purpose | Usage Context |
+|:----:|:----------:|:-------:|:-------------:|
+| Hot Path | `[[likely]]` | Branch prediction | Critical execution paths |
+| Cold Path | `[[unlikely]]` | Branch prediction |  Error handling paths |
+| Critical | `[[optimize]]` | Optimization level | Performance-critical sections |
+| Alignment | `[[align]]` | Memory alignment |  Cache-sensitive data |
+
+###### 1.5.2.8.1 Annotation Categories
+1. Path Optimization
+
+| Context | Annotation Type | Application Criteria |
+|:-------:|:---------------:|:--------------------:|
+| Frame critical | Hot path | >1000 calls/frame |
+| Error handling | Cold path | <1% execution frequency |
+| Resource management | Critical | Resource-intensive operations |
+| Data structures | Alignment | Cache-line dependent access |
+
+2. Usage Requirements
+
+| Annotation | Verification | Documentation | Impact |
+|:----------:|:------------:|:-------------:|:------:|
+| Hot path | Profile data | Usage metrics | Branch prediction |
+| Cold path | Error rates | Exception paths | Code layout |
+| Critical | Benchmarks | Performance data | Optimization |
+| Alignment | Cache analysis | Memory patters | Cache efficiency |
+
+###### 1.5.2.8.2 Application Criteria
+1. Decision Matrix
+
+| Scenario | Required Metrics | Threshold | Annotation Type |
+|:--------:|:----------------:|:---------:|:---------------:|
+| Main loop | Execution frequency | >60Hz | Hot path |
+| Error paths | Error rate | <1% | Cold path |
+| Core compute | CPU time | >5% | Critical |
+| Data access | Cache misses | >1% | Alignment |
+
+2. Validation Requirements
+
+| Type | Metric | Threshold | Verification Method |
+|:----:|:------:|:---------:|:-------------------:|
+| Hot path | Hit rate | >95% | Performance counter |
+| Cold path | Miss rate | <5% | Branch statistics |
+| Critical | Speed-up | >10% | Benchmark comparison |
+| Alignment | Cache hits | >95% | Cache analysis |
 
 ##### 1.5.2.9 Debug Support
 | Feature | Implementation | Purpose |
