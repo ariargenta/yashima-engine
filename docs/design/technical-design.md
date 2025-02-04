@@ -613,12 +613,87 @@ graph TD
 | Maintenance | Long-term cost | Complexity analysis |
 
 ##### 1.5.2.9 Debug Support
-| Feature | Implementation | Purpose |
-|:-------:|:--------------:|:-------:|
-| Assertions | Static analysis | Invariant checking |
-| Logging | Ring buffer | Performance monitoring |
-| Profiling | Instrumentation | Hot path analysis |
-| Validation | Layer system | Correctness verification |
+| Feature | Implementation | Purpose | Overhead |
+|:-------:|:--------------:|:-------:|:--------:|
+| Assertions | Static analysis | Invariant checking | Zero in release |
+| Logging | Ring buffer | Performance monitoring | Constant memory |
+| Profiling | Instrumentation | Hot path analysis | Configurable |
+| Validation | Layer system | Correctness verification | Debug only |
+
+###### 1.5.2.9.1 Debug Features Classification
+1. Runtime Verification
+
+| Feature | Activation | Impact | Usage Context |
+|:-------:|:----------:|:------:|:-------------:|
+| Debug | Debug build | Full check | Development |
+| Development | Dev build | Partial check | Testing |
+| Release | Release build | Critical only | Production |
+| Profile | Profile build | Performance | Optimization |
+
+2. Memory Requirements
+
+| System | Allocation | Lifetime | Cleanup |
+|:------:|:----------:|:--------:|:-------:|
+| Ring buffer | Fixed size | Continuous | Circular |
+| Profile data | Growing | Session | Manual clear |
+| Validation | Static | Build time | Automatic |
+| Trace data | Bounded | Temporary | Per frame |
+
+###### 1.5.2.9.2 Feature Categories
+1. Assertion System
+
+| Level | Scope | Validation | Recorvery |
+|:-----:|:-----:|:----------:|:---------:|
+| Fatal | System integrity | Immediate | Terminate |
+| Error | Operation failure | Report | Continue |
+| Warning | Potential issue | Log | Proceed |
+| Info | State check | Record | Monitor |
+
+2. Logging System
+
+| Priority | Buffer size | Retention | Analysis |
+|:--------:|:-----------:|:---------:|:--------:|
+| Critical | 1MB | Persistent | Immediate |
+| Error | 4MB | 24h | Daily |
+| Warning | 16MB | 1h | Periodic |
+| Debug | 64MB | 10min | On-demand |
+
+3. Profiling System
+
+| Metric | Collection | Impact | Usage |
+|:------:|:----------:|:------:|:-----:|
+| Time | Frame-based | Low | Continuous |
+| Memory | Per alloc | Medium | Periodic |
+| GPU | Per draw | Medium | On demand |
+| System | Per event | High | Manual |
+
+4.  Validation System
+
+| Layer | Scope | Frequency | Cost |
+|:-----:|:-----:|:---------:|:----:|
+| API | Interface | Always | Low |
+| Resource | Allocation | High use | Medium |
+| State | Transitions | Critical | Medium |
+| System | Integration | Periodic | High |
+
+###### 1.5.2.9.3 Integration Requirements
+1. Build Configuration
+
+| Mode | Features | Overhead | Use Case |
+|:----:|:--------:|:--------:|:--------:|
+| Debug | All | Maximum | Development |
+| Development | Most | High | Testing |
+| Profile | Selected | Medium | Optimization |
+| Release | Minimal | None | Production |
+
+2. Performance Impact
+
+| Feature | Debug | Development | Profile | Release |
+|:-------:|:-----:|:-----------:|:-------:|:-------:|
+| Assertions | 100% | 50% | 10% | 0% |
+| Logging | 100% | 25% | 5% | 1% |
+| Profiling | N/A | 100% | 25% | 0% |
+| Validation | 100% | 50% | 10% | 0% |
 
 ##### 1.5.2.10 Build Configuration
 | Mode | Features | Use Case |
