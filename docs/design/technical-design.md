@@ -593,6 +593,25 @@ graph TD
 | Critical | Speed-up | >10% | Benchmark comparison |
 | Alignment | Cache hits | >95% | Cache analysis |
 
+###### 1.5.2.8.3 Documentation Standards
+1. Required Information
+
+| Element | Content | Purpose |
+|:-------:|:-------:|:-------:|
+| Rationale | Performance impact | Justify annotation |
+| Metrics | Measured data | Support decision |
+| Context | Usage scenario | Define scope |
+| Validation | Test results | Verify effectiveness |
+
+2. Review Requirements
+
+| Aspect | Criteria | Validation |
+|:------:|:--------:|:----------:|
+| Necessity | Performace data | Benchmark results |
+| Correctness | Usage pattern | Static analysis |
+| Impact | System effect | Performance test |
+| Maintenance | Long-term cost | Complexity analysis |
+
 ##### 1.5.2.9 Debug Support
 | Feature | Implementation | Purpose |
 |:-------:|:--------------:|:-------:|
