@@ -722,7 +722,42 @@ graph TD
 | Tracking | Yes | No | Yes | Yes |
 | Validation | Yes | No | Partial | Yes |
 
+###### 1.5.2.10.2 Mode-specific Requirements
+1. Debug Configuration
 
+| Feature | State | Purpose | Impact |
+|:-------:|:-----:|:-------:|:------:|
+| Validation | Enabled | Correctness | High |
+| Logging | Verbose | Tracing | High |
+| Checks | Maximum | Safety | High |
+| Tools | All | Development | High |
+
+2. Release Configuration
+
+| Feature | State | Purpose | Impact |
+|:-------:|:-----:|:-------:|:------:|
+| Validation | Disabled | Performance | None |
+| Logging | Minimal | Errors only | Minimal |
+| Checks | Critical | Stability | Minimal |
+| Tools | None | Speed | None |
+
+3. Profile Configuration
+
+| Feature | State | Purpose | Impact |
+|:-------:|:-----:|:-------:|:------:|
+| Validation | Limited | Balance | Medium |
+| Logging | Selected | Analysis | Medium |
+| Checks | Important | Monitoring | Medium |
+| Tools | Analysis | Profiling | Medium |
+
+4. Test Configuration
+
+| Feature | State | Purpose | Impact |
+|:-------:|:-----:|:-------:|:------:|
+| Validation | Full | Coverage | High |
+| Logging | Complete | Verification | High |
+| Checks | All | Testing | High |
+| Tools | Testing | Validation | High |
 
 ### 1.2 Scope
 - Core  engine components
