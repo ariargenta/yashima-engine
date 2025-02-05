@@ -696,12 +696,33 @@ graph TD
 | Validation | 100% | 50% | 10% | 0% |
 
 ##### 1.5.2.10 Build Configuration
-| Mode | Features | Use Case |
-|:----:|:--------:|:-------:|
-| Debug | Full validation | Development |
-| Release | No debug | Production |
-| Profile | Instrumented | Performance analysis |
-| Test | Coverage | Validation |
+| Mode | Features | Use Case | Optimization |
+|:----:|:--------:|:--------:|:------------:|
+| Debug | Full validation | Development | None (-O0) |
+| Release | No debug | Production | Maximum (-O3) |
+| Profile | Instrumented | Performance analysis | Balanced (-O2) |
+| Test | Coverage | Validation | Minimal (-O1) |
+
+###### 1.5.2.10.1 Build Mode Specifications
+1. Feature Matrix
+
+| Feature | Debug | Release | Profile | Test |
+|:-------:|:-----:|:-------:|:-------:|:----:|
+| Assertions | Yes | No | Limited | Yes |
+| Symbols | Full | None | Partial | Full |
+| Optimizations | Off | Full | Partial | Minimal |
+| Instrumentation | Full | None | Selected | Coverage |
+
+2. Memory Model
+
+| Aspect | Debug | Release | Profile | Test |
+|:------:|:-----:|:-------:|:-------:|:----:|
+| Guards | Yes | No | Limited | Yes |
+| Checks | Full | None | Selected | Full |
+| Tracking | Yes | No | Yes | Yes |
+| Validation | Yes | No | Partial | Yes |
+
+
 
 ### 1.2 Scope
 - Core  engine components
