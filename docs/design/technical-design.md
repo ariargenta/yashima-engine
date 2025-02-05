@@ -759,6 +759,31 @@ graph TD
 | Checks | All | Testing | High |
 | Tools | Testing | Validation | High |
 
+###### 1.5.2.10.3 Performance Characteristics
+1. Resource Usage
+
+| Resource | Debug | Release | Profile | Test | Baseline Reference |
+|:--------:|:-----:|:-------:|:-------:|:----:|:------------------:|
+| Memory | +100% | Baseline | +50% | +100% | Runtime memory usage |
+| CPU | +200% | Baseline | +50% | +150% | Runtime CPU utilization |
+| Storage | +300% | Baseline | +100% | +200% | Binary size |
+| Bandwidth | +100% | Baseline | +50% | +100% | I/O operation |
+
+2. Build Items
+
+| Component | Target Time | Variance Allowed | Factors |
+|:---------:|:-----------:|:----------------:|:-------:|
+| Debug compile | <30s | ±10s | No optimization |
+| Release compile | <180s | ±30s | Full optimization |
+| Profile compile | <120s | ±20s | Partial optimization |
+| Test compile | <45s | ±15s | Coverage instrumentation |
+
+**Time Measurement Criteria**:
+- Based on 100K lines of code
+- Using recommended hardware
+- Single configuration build
+- Clean build scenario
+
 ### 1.2 Scope
 - Core  engine components
 - Resource management system
