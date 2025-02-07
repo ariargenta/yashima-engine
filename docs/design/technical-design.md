@@ -305,16 +305,16 @@ graph TD
 
 ## 7. Evaluation Criteria
 ### 7.1 Performance Critical Definition
-    - Executed every frame
-    - Part of render pipeline
-    - Resource management operations
-    - Real-time ML decisions
+- Executed every frame
+- Part of render pipeline
+- Resource management operations
+- Real-time ML decisions
 
 ### 7.2 Measurement Thresholds
-    - Frame time impact > 1%
-    - Called > 1000 times/frame
-    - Memory operations > 1MB
-    - Affects multiple systems
+- Frame time impact > 1%
+- Called > 1000 times/frame
+- Memory operations > 1MB
+- Affects multiple systems
 
 ### 7.3 Optimization Categories
 | **Path Type** | **Threshold** | **Action** | **Rationale** |
@@ -325,50 +325,50 @@ graph TD
 | Resource Critical | 1ms budget | Batch | Resource state management overhead |
 
 #### 7.3.1 Frame Critical
-    - **Definition**: Operations that directly impact frame rendering time
-    - **Examples**:
-        * Vertex transformation
-        * Draw call submission
-        * State changes
-    - **Impact**:
-        * Direct effect on FPS
-        * User experience
-        * System responsiveness
+- **Definition**: Operations that directly impact frame rendering time
+- **Examples**:
+    - Vertex transformation
+        - Draw call submission
+        - State changes
+- **Impact**:
+    - Direct effect on FPS
+    - User experience
+    - System responsiveness
 
 #### 7.3.2 Memory Critical
-    - **Definition**: Operations affecting memory access patterns
-    - **Examples**:
-        * Resource allocation
-        * Buffer updates
-        * Texture uploads
-    - **Impact**:
-        * Cache performance
-        * Memory bandwidth
-        * System latency
+- **Definition**: Operations affecting memory access patterns
+- **Examples**:
+    - Resource allocation
+    - Buffer updates
+    - Texture uploads
+- **Impact**:
+    - Cache performance
+    - Memory bandwidth
+    - System latency
 
 #### 7.3.3 ML Critical
-    - **Definition**: Operations in ML decision loop
-    - **Examples**:
-        * State evaluation
-        * Resource prediction
-        * Control decisions
-    - **Impact**:
-        * System stability
-        * Resource efficiency
-        * Response time
+- **Definition**: Operations in ML decision loop
+- **Examples**:
+    - State evaluation
+    - Resource prediction
+    - Control decisions
+- **Impact**:
+    - System stability
+    - Resource efficiency
+    - Response time
 
 #### 7.3.4 Resource Critical
-    - **Definition**: Operations managing system resources
-    - **Examples**:
-        * Buffer management
-        * Memory pools
-        * State tracking
-    - **Impact**:
-        * Resource availability
-        * System overhead
-        * Overall performance
+- **Definition**: Operations managing system resources
+- **Examples**:
+    - Buffer management
+    - Memory pools
+    - State tracking
+- **Impact**:
+    - Resource availability
+    - System overhead
+    - Overall performance
 
-### 7.4 Registries and Records
+### 7.4 Documentation Requirements
 | **Aspect** | **Content** | **Purpose** | **Format** |
 |:------:|:------:|:------:|:------:|
 | Performance Data | Metrics & Benchmarks | Justification | Tables + Graphs |
@@ -377,52 +377,52 @@ graph TD
 | Validation | Tests & Results | Verification | Test reports |
 
 #### 7.4.1 Performance Data
-    - **Required Metrics**:
-        * Baseline performance
-        * Optimized performance
-        * Resource utilization
-        * System impact
-    - **Documentation Format**:
-        * Performance tables
-        * Comparison graphs
-        * Timeline analysis
-        * Resource usage charts
+- **Required Metrics**:
+    - Baseline performance
+    - Optimized performance
+    - Resource utilization
+    - System impact
+- **Documentation Format**:
+    - Performance tables
+    - Comparison graphs
+    - Timeline analysis
+    - Resource usage charts
 
 #### 7.4.2 Optimization Strategy
-    - **Required Elements**:
-        * Problem analysis
-        * Solution approach
-        * Implementation method
-        * Expected outcomes
-    - **Documentation Format**:
-        * Technical description
-        * Code examples
-        * Algorithm analysis
-        * Performance models
+- **Required Elements**:
+    - Problem analysis
+    - Solution approach
+    - Implementation method
+    - Expected outcomes
+- **Documentation Format**:
+    - Technical description
+    - Code examples
+    - Algorithm analysis
+    - Performance models
 
 #### 7.4.3 Trade-offs
-    - **Required Analysis**:
-        * Performance gains
-        * Resource costs
-        * Complexity impact
-        * Maintenance implications
-    - **Documentation Format**:
-        * Decision matrix
-        * Cost-benefit analysis
-        * Risk assessment
-        * Long-term impact
+- **Required Analysis**:
+    - Performance gains
+    - Resource costs
+    - Complexity impact
+    - Maintenance implications
+- **Documentation Format**:
+    - Decision matrix
+    - Cost-benefit analysis
+    - Risk assessment
+    - Long-term impact
 
 #### 7.4.4 Validation
-    - **Required Evidence**:
-        * Performance tests
-        * Stress tests
-        * Edge cases
-        * System impact
-    - **Documentation Format**:
-        * Test reports
-        * Performance data
-        * Validation criteria
-        * Success metrics
+- **Required Evidence**:
+    - Performance tests
+    - Stress tests
+    - Edge cases
+    - System impact
+- **Documentation Format**:
+    - Test reports
+    - Performance data
+    - Validation criteria
+    - Success metrics
 
 --------------------------------------------------------------------------------
 
@@ -522,7 +522,7 @@ graph TD
 | Resource | Owner thread | Thread ID |
 | System | Any thread | Safety level |
 
-###### 1.5.2.7.2 Syncronization Methods
+### 9.4 Syncronization Methods
 1. Priority Order
     - Lock-Free operations
     - Atomic operations
