@@ -457,7 +457,7 @@ graph TD
 
 #### 8.2.2 Alignment Requirements
 | **Resource Type** | **Alignment** | **Justification** |
-|:------:|:------:|:------:|:------:|
+|:------:|:------:|:------:|
 | Hot Path | 64 bytes | Cache line |
 | Resources | 256 bytes | GPU access |
 | Temporary | 16 bytes | SIMD ops |
