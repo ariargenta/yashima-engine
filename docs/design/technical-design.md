@@ -523,47 +523,46 @@ graph TD
 | System | Any thread | Safety level |
 
 ### 9.4 Syncronization Methods
-1. Priority Order
-    - Lock-Free operations
-    - Atomic operations
-    - Fine-grained locks
-    - Coarse-grained locks
+#### 9.4.1 Priority Order
+- Lock-Free operations
+- Atomic operations
+- Fine-grained locks
+- Coarse-grained locks
 
-2. Critical Section Management
-
-| Section | Strategy | Max Duration |
-|:-------:|:--------:|:------------:|
+#### 9.4.2. Critical Section Management
+| **Section** | **Strategy** | **Max Duration** |
+|:------:|:------:|:------:|
 | Hot path | Lock-free | 0μs |
 | Resource | Fine lock | 100μs |
 | State | Coarse lock | 1ms |
 | System | Global lock | 10ms |
 
-###### 1.5.2.7.3 Documentation Requirements
-1. Required Elements
-
-| Element | Content | Purpose |
-|:-------:|:-------:|:-------:|
+### 9.5 Documentation Requirements
+#### 9.5.1 Required Elements
+| **Element** | **Content** | **Purpose** |
+|:------:|:------:|:------:|
 | Thread Safety | Safety level declaration | Define concurrency guarantees |
 | Sync method | Syncronization approach | Specify implementation strategy |
 | Performance | Syncronization impact | Document overhead |
 | Constraints | Usage requirements | Specify caller obligations |
 
-2. Safety Levels
-
-| Level | Meaning | Documentation |
-|:-----:|:-------:|:-------------:|
+#### 9.5.2 Safety Levels
+| **Level** | **Meaning** | **Documentation** |
+|:------:|:------:|:------:|
 | Thread-safe | Full concurrent access | No external sync needed |
 | External sync | Caller syncrhonization | Sync requirements |
 | Main thread | Main thread only | Thread context |
 | Implementation defined | Per-component basis | Specific details |
 
-##### 1.5.2.8 Performance Annotations
-| Type | Annotation | Purpose | Usage Context |
-|:----:|:----------:|:-------:|:-------------:|
+#### 9.5.3 Performance Annotations
+| **Type** | **Annotation** | **Purpose** | **Usage Context** |
+|:------:|:------:|:------:|:------:|
 | Hot Path | `[[likely]]` | Branch prediction | Critical execution paths |
 | Cold Path | `[[unlikely]]` | Branch prediction |  Error handling paths |
 | Critical | `[[optimize]]` | Optimization level | Performance-critical sections |
 | Alignment | `[[align]]` | Memory alignment |  Cache-sensitive data |
+
+--------------------------------------------------------------------------------
 
 ###### 1.5.2.8.1 Annotation Categories
 1. Path Optimization
