@@ -564,178 +564,172 @@ graph TD
 
 --------------------------------------------------------------------------------
 
-###### 1.5.2.8.1 Annotation Categories
-1. Path Optimization
-
-| Context | Annotation Type | Application Criteria |
-|:-------:|:---------------:|:--------------------:|
+## 10. Annotation Categories
+### 10.1 Path Optimization
+| **Context** | **Annotation Type** | **Application Criteria** |
+|:------:|:------:|:------:|
 | Frame critical | Hot path | >1000 calls/frame |
 | Error handling | Cold path | <1% execution frequency |
 | Resource management | Critical | Resource-intensive operations |
 | Data structures | Alignment | Cache-line dependent access |
 
-2. Usage Requirements
-
-| Annotation | Verification | Documentation | Impact |
-|:----------:|:------------:|:-------------:|:------:|
+### 10.2 Usage Requirements
+| **Annotation** | **Verification** | **Documentation** | **Impact** |
+|:------:|:------:|:------:|:------:|
 | Hot path | Profile data | Usage metrics | Branch prediction |
 | Cold path | Error rates | Exception paths | Code layout |
 | Critical | Benchmarks | Performance data | Optimization |
 | Alignment | Cache analysis | Memory patters | Cache efficiency |
 
-###### 1.5.2.8.2 Application Criteria
-1. Decision Matrix
-
-| Scenario | Required Metrics | Threshold | Annotation Type |
-|:--------:|:----------------:|:---------:|:---------------:|
+### 10.3 Application Criteria
+#### 10.3.1 Decision Matrix
+| **Scenario** | **Required Metrics** | **Threshold** | **Annotation Type** |
+|:------:|:------:|:------:|:------:|
 | Main loop | Execution frequency | >60Hz | Hot path |
 | Error paths | Error rate | <1% | Cold path |
 | Core compute | CPU time | >5% | Critical |
 | Data access | Cache misses | >1% | Alignment |
 
-2. Validation Requirements
-
-| Type | Metric | Threshold | Verification Method |
-|:----:|:------:|:---------:|:-------------------:|
+#### 10.3.2 Validation Requirements
+| **Type** | **Metric** | **Threshold** | **Verification Method** |
+|:------:|:------:|:------:|:------:|
 | Hot path | Hit rate | >95% | Performance counter |
 | Cold path | Miss rate | <5% | Branch statistics |
 | Critical | Speed-up | >10% | Benchmark comparison |
 | Alignment | Cache hits | >95% | Cache analysis |
 
-###### 1.5.2.8.3 Documentation Standards
-1. Required Information
+--------------------------------------------------------------------------------
 
-| Element | Content | Purpose |
-|:-------:|:-------:|:-------:|
+## 11. Documentation Standards
+### 11.1 Required Information
+| **Element** | **Content** | **Purpose** |
+|:------:|:------:|:------:|
 | Rationale | Performance impact | Justify annotation |
 | Metrics | Measured data | Support decision |
 | Context | Usage scenario | Define scope |
 | Validation | Test results | Verify effectiveness |
 
-2. Review Requirements
-
-| Aspect | Criteria | Validation |
-|:------:|:--------:|:----------:|
+### 11.2 Review Requirements
+| **Aspect** | **Criteria** | **Validation** |
+|:------:|:------:|:------:|
 | Necessity | Performace data | Benchmark results |
 | Correctness | Usage pattern | Static analysis |
 | Impact | System effect | Performance test |
 | Maintenance | Long-term cost | Complexity analysis |
 
-##### 1.5.2.9 Debug Support
-| Feature | Implementation | Purpose | Overhead |
-|:-------:|:--------------:|:-------:|:--------:|
+--------------------------------------------------------------------------------
+
+## 12. Debug Support
+### 12.1 Debug Features Classification
+| **Feature** | **Implementation** | **Purpose** | **Overhead** |
+|:------:|:------:|:------:|:------:|
 | Assertions | Static analysis | Invariant checking | Zero in release |
 | Logging | Ring buffer | Performance monitoring | Constant memory |
 | Profiling | Instrumentation | Hot path analysis | Configurable |
 | Validation | Layer system | Correctness verification | Debug only |
 
-###### 1.5.2.9.1 Debug Features Classification
-1. Runtime Verification
-
-| Feature | Activation | Impact | Usage Context |
-|:-------:|:----------:|:------:|:-------------:|
+### 12.2 Runtime Verification
+| **Feature** | **Activation** | **Impact** | **Usage Context** |
+|:------:|:------:|:------:|:------:|
 | Debug | Debug build | Full check | Development |
 | Development | Dev build | Partial check | Testing |
 | Release | Release build | Critical only | Production |
 | Profile | Profile build | Performance | Optimization |
 
-2. Memory Requirements
+--------------------------------------------------------------------------------
 
-| System | Allocation | Lifetime | Cleanup |
-|:------:|:----------:|:--------:|:-------:|
+## 13. Memory Requirements
+| **System** | **Allocation** | **Lifetime** | **Cleanup** |
+|:------:|:------:|:------:|:------:|
 | Ring buffer | Fixed size | Continuous | Circular |
 | Profile data | Growing | Session | Manual clear |
 | Validation | Static | Build time | Automatic |
 | Trace data | Bounded | Temporary | Per frame |
 
-###### 1.5.2.9.2 Feature Categories
-1. Assertion System
+--------------------------------------------------------------------------------
 
-| Level | Scope | Validation | Recorvery |
-|:-----:|:-----:|:----------:|:---------:|
+## 14. Feature Categories
+### 14.1 Assertion System
+| **Level** | **Scope** | **Validation** | **Recorvery** |
+|:------:|:------:|:------:|:------:|
 | Fatal | System integrity | Immediate | Terminate |
 | Error | Operation failure | Report | Continue |
 | Warning | Potential issue | Log | Proceed |
 | Info | State check | Record | Monitor |
 
-2. Logging System
-
-| Priority | Buffer size | Retention | Analysis |
-|:--------:|:-----------:|:---------:|:--------:|
+### 14.2 Logging System
+| **Priority** | **Buffer size** | **Retention** | **Analysis** |
+|:------:|:------:|:------:|:------:|
 | Critical | 1MB | Persistent | Immediate |
 | Error | 4MB | 24h | Daily |
 | Warning | 16MB | 1h | Periodic |
 | Debug | 64MB | 10min | On-demand |
 
-3. Profiling System
-
-| Metric | Collection | Impact | Usage |
-|:------:|:----------:|:------:|:-----:|
+### 14.3 Profiling System
+| **Metric** | **Collection** | **Impact** | **Usage** |
+|:------:|:------:|:------:|:------:|
 | Time | Frame-based | Low | Continuous |
 | Memory | Per alloc | Medium | Periodic |
 | GPU | Per draw | Medium | On demand |
 | System | Per event | High | Manual |
 
-4.  Validation System
-
-| Layer | Scope | Frequency | Cost |
-|:-----:|:-----:|:---------:|:----:|
+### 14.4 Validation System
+| **Layer** | **Scope** | **Frequency** | **Cost** |
+|:------:|:------:|:------:|:------:|
 | API | Interface | Always | Low |
 | Resource | Allocation | High use | Medium |
 | State | Transitions | Critical | Medium |
 | System | Integration | Periodic | High |
 
-###### 1.5.2.9.3 Integration Requirements
-1. Build Configuration
-
-| Mode | Features | Overhead | Use Case |
-|:----:|:--------:|:--------:|:--------:|
+### 14.5 Integration Requirements
+| **Mode** | **Features** | **Overhead** | **Use Case** |
+|:------:|:------:|:------:|:------:|
 | Debug | All | Maximum | Development |
 | Development | Most | High | Testing |
 | Profile | Selected | Medium | Optimization |
 | Release | Minimal | None | Production |
 
-2. Performance Impact
-
+### 14.6 Performance Impact
 | Feature | Debug | Development | Profile | Release |
-|:-------:|:-----:|:-----------:|:-------:|:-------:|
+|:------:|:------:|:------:|:------:|:------:|
 | Assertions | 100% | 50% | 10% | 0% |
 | Logging | 100% | 25% | 5% | 1% |
 | Profiling | N/A | 100% | 25% | 0% |
 | Validation | 100% | 50% | 10% | 0% |
 
-##### 1.5.2.10 Build Configuration
-| Mode | Features | Use Case | Optimization |
-|:----:|:--------:|:--------:|:------------:|
+--------------------------------------------------------------------------------
+
+## 15. Build Configuration
+### 15.1 Build Mode Specifications
+| **Mode** | **Features** | **Use Case** | **Optimization** |
+|:------:|:------:|:------:|:------:|
 | Debug | Full validation | Development | None (-O0) |
 | Release | No debug | Production | Maximum (-O3) |
 | Profile | Instrumented | Performance analysis | Balanced (-O2) |
 | Test | Coverage | Validation | Minimal (-O1) |
 
-###### 1.5.2.10.1 Build Mode Specifications
-1. Feature Matrix
-
-| Feature | Debug | Release | Profile | Test |
-|:-------:|:-----:|:-------:|:-------:|:----:|
+### 15.2 Feature Matrix
+| **Feature** | **Debug** | **Release** | **Profile** | **Test** |
+|:------:|:------:|:------:|:------:|:------:|
 | Assertions | Yes | No | Limited | Yes |
 | Symbols | Full | None | Partial | Full |
 | Optimizations | Off | Full | Partial | Minimal |
 | Instrumentation | Full | None | Selected | Coverage |
 
-2. Memory Model
-
-| Aspect | Debug | Release | Profile | Test |
-|:------:|:-----:|:-------:|:-------:|:----:|
+### 15.3 Memory Model
+| **Aspect** | **Debug** | **Release** | **Profile** | **Test** |
+|:------:|:------:|:------:|:------:|:------:|
 | Guards | Yes | No | Limited | Yes |
 | Checks | Full | None | Selected | Full |
 | Tracking | Yes | No | Yes | Yes |
 | Validation | Yes | No | Partial | Yes |
 
-###### 1.5.2.10.2 Mode-specific Requirements
-1. Debug Configuration
+--------------------------------------------------------------------------------
 
-| Feature | State | Purpose | Impact |
-|:-------:|:-----:|:-------:|:------:|
+## 15. Mode-specific Requirements
+### 14.8.3.1 Debug Configuration
+| **Feature** | **State** | **Purpose** | **Impact** |
+|:------:|:------:|:------:|:------:|
 | Validation | Enabled | Correctness | High |
 | Logging | Verbose | Tracing | High |
 | Checks | Maximum | Safety | High |
