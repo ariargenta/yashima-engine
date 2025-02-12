@@ -801,7 +801,7 @@ graph TD
 
 #### 18.1.2 Component Responsibilities
 | **Component** | **Primary Role** | **Critical Requirements** |
-|:------:|:------:|:------:|:------:|
+|:------:|:------:|:------:|
 | ML Control | Resource optimization | 100μs response time |
 | Resource Manager | Asset management | Deterministic allocation |
 | Graphics Core | Rendering pipeline | Frame time stability |
