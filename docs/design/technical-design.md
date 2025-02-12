@@ -726,8 +726,8 @@ graph TD
 
 --------------------------------------------------------------------------------
 
-## 15. Mode-specific Requirements
-### 14.8.3.1 Debug Configuration
+## 16. Mode-specific Requirements
+### 16.1 Debug Configuration
 | **Feature** | **State** | **Purpose** | **Impact** |
 |:------:|:------:|:------:|:------:|
 | Validation | Enabled | Correctness | High |
@@ -735,47 +735,44 @@ graph TD
 | Checks | Maximum | Safety | High |
 | Tools | All | Development | High |
 
-2. Release Configuration
-
-| Feature | State | Purpose | Impact |
-|:-------:|:-----:|:-------:|:------:|
+### 16.2 Release Configuration
+| **Feature** | **State** | **Purpose** | **Impact** |
+|:------:|:------:|:------:|:------:|
 | Validation | Disabled | Performance | None |
 | Logging | Minimal | Errors only | Minimal |
 | Checks | Critical | Stability | Minimal |
 | Tools | None | Speed | None |
 
-3. Profile Configuration
-
-| Feature | State | Purpose | Impact |
-|:-------:|:-----:|:-------:|:------:|
+### 16.3 Profile Configuration
+| **Feature** | **State** | **Purpose** | **Impact** |
+|:------:|:------:|:------:|:------:|
 | Validation | Limited | Balance | Medium |
 | Logging | Selected | Analysis | Medium |
 | Checks | Important | Monitoring | Medium |
 | Tools | Analysis | Profiling | Medium |
 
-4. Test Configuration
-
-| Feature | State | Purpose | Impact |
-|:-------:|:-----:|:-------:|:------:|
+### 16.4 Test Configuration
+| **Feature** | **State** | **Purpose** | **Impact** |
+|:------:|:------:|:------:|:------:|
 | Validation | Full | Coverage | High |
 | Logging | Complete | Verification | High |
 | Checks | All | Testing | High |
 | Tools | Testing | Validation | High |
 
-###### 1.5.2.10.3 Performance Characteristics
-1. Resource Usage
+--------------------------------------------------------------------------------
 
-| Resource | Debug | Release | Profile | Test | Baseline Reference |
-|:--------:|:-----:|:-------:|:-------:|:----:|:------------------:|
+## 17. Performance Characteristics
+### 17.1 Resource Usage
+| **Resource** | **Debug** | **Release** | **Profile** | **Test** | **Baseline Reference** |
+|:------:|:------:|:------:|:------:|:------:|:------:|
 | Memory | +100% | Baseline | +50% | +100% | Runtime memory usage |
 | CPU | +200% | Baseline | +50% | +150% | Runtime CPU utilization |
 | Storage | +300% | Baseline | +100% | +200% | Binary size |
 | Bandwidth | +100% | Baseline | +50% | +100% | I/O operation |
 
-2. Build Items
-
-| Component | Target Time | Variance Allowed | Factors |
-|:---------:|:-----------:|:----------------:|:-------:|
+### 17.2 Build Items
+| **Component** | **Target Time** | **Variance Allowed** | **Factors** |
+|:------:|:------:|:------:|:------:|
 | Debug compile | <30s | ±10s | No optimization |
 | Release compile | <180s | ±30s | Full optimization |
 | Profile compile | <120s | ±20s | Partial optimization |
