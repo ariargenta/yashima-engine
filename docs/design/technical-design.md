@@ -784,12 +784,74 @@ graph TD
 - Single configuration build
 - Clean build scenario
 
-### 1.2 Scope
-- Core  engine components
-- Resource management system
-- ML control system
-- Graphics pipeline
-- Platform abstraction layer
+--------------------------------------------------------------------------------
+
+## 18. System Overview
+### 18.1 System Architecture
+#### 18.1.1 Core Components
+```mermaid
+graph TD
+    A[ML Control System] --> B[Resource Manager]
+    B --> C[Graphics Core]
+    C --> D[Platform Layer]
+    E[Monitoring System] -.->|Feedback| A
+    E -.->|Feedback| B
+    E -.->|Feedback| C
+```
+
+#### 18.1.2 Component Responsibilities
+| **Component** | **Primary Role** | **Critical Requirements** |
+|:------:|:------:|:------:|:------:|
+| ML Control | Resource optimization | 100μs response time |
+| Resource Manager | Asset management | Deterministic allocation |
+| Graphics Core | Rendering pipeline | Frame time stability |
+| Platform Layer | Hardware abstraction | Minimal overhead |
+| Monitoring System | Performance tracking | Non-intrusive |
+
+### 18.2 System Flow
+#### 18.2.1 Data Pipeline
+```mermaid
+graph LR
+    A[Input] --> |State| B[Processing]
+    B --> |Commands| C[Execution]
+    C --> |Results| D[Output]
+    D --> |Feedback| A
+```
+
+#### 18.2.2 Flow Characteristics
+| **Stage** | **Time Budget** | **Validation** | **Recovery**|
+|:------:|:------:|:------:|:------:|
+| Input | 1ms | State validation | Retry |
+| Processing | 2ms | Command validation | Fallback |
+| Execution | 12ms | Result verification | Reset |
+| Output | 1ms | Consistency check | Skip frame |
+
+#### 18.3.2 State Transitions
+```mermaid
+graph LR
+    A[Initialize] --> B[Ready]
+    B --> C[Active]
+    C --> B
+    B --> D[Error]
+    D --> B
+```
+
+### 18.4 System Boundaries
+#### 18.4.1 Interface Boundaries
+| **Boundary** | **Type** | **Protocol** | **Validation** |
+|:------:|:------:|:------:|:------:|
+| External API | Public | Documented API | Full |
+| Componet | Internal | Message passing | Partial |
+| Hardware | Platform | Driver API | Hardware |
+| Debug | Development | Tool interface | Debug |
+
+#### 18.4.2 Resource Boundaries
+| **Resource** | **Limit** | **Monitoring** | **Action** |
+|:------:|:------:|:------:|:------:|
+| Memory | Hardware | Continuous | Throttle |
+| Compute | 90% capacity | Per frame | Scale |
+| Bandwidth | 80% capacity | Periodic | Queue |
+| Storage | Available | On demand | Cache |
 
 ### 1.3 References
 - Vision and Scope Document
