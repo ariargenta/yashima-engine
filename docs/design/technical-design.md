@@ -842,10 +842,30 @@ graph TD
 #### 18.2.1 Data Pipeline
 ```mermaid
 graph LR
-    A[Input] --> |State| B[Processing]
-    B --> |Commands| C[Execution]
-    C --> |Results| D[Output]
-    D --> |Feedback| A
+    subgraph "Input Processing"
+        A[System State] --> B[Performance Metrics]
+        B --> C[ML Analysis]
+    end
+
+    subgraph "Resource Management"
+        C --> D[Resource Decisions]
+        D --> E[Resource Allocation]
+        E --> F[State Updates]
+    end
+
+    subgraph "Graphics Pipeline"
+        F --> G[Command Generation]
+        G --> H[Resource Binding]
+        H --> I[Command Submission]
+    end
+
+    subgraph "Execution"
+        I --> J[GPU Execution]
+        J --> K[Frame Presentation]
+        K --> L[Performance Data]
+    end
+
+    L -->|Feedback Loop| A
 ```
 
 #### 18.2.2 Flow Characteristics
