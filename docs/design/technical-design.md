@@ -841,7 +841,7 @@ graph TD
 ### 18.2 System Flow
 #### 18.2.1 Data Pipeline
 ```mermaid
-graph LR
+graph TD
     subgraph "Input Processing"
         A[System State] --> B[Performance Metrics]
         B --> C[ML Analysis]
