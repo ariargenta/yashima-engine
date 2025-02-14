@@ -868,6 +868,22 @@ graph TD
     L -->|Feedback Loop| A
 ```
 
+##### 18.2.2 Pipeline Stages
+| **Stage** | **Components** | **Input** | **Output** | **Time Budget** |
+|:------:|:------:|:------:|:------:|:------:|
+| Input Processing | State Collection | System State | Analysis Data | 1ms |
+| Input Processing | Performance Monitor | Raw Metrics | Processed Data | 1ms |
+| Input Processing | ML Controller | Processed Data | Resource Decisions | 100μs |
+| Resource Management | Decision Application | ML Output | Resource Commands | 50μs |
+| Resource Management | Resource Allocation | Commands | Resource States | 10μs |
+| Resource Management | State Management | Resource States | System State |  50μs |
+| Graphics Pipeline | Command Generation | System State | Command Buffer | 2ms |
+| Graphics Pipeline | Resource Binding | Resources | Bound State | 1ms |
+| Graphics Pipeline | Command Submit | Command Buffer | GPU Commands | 500μs |
+| Execution | GPU PRocessing | Commands | Frame Data | 8ms |
+| Execution | Presentation | Frame Data | Display | 1ms |
+| Execution | Telemetry | System Data | Metrics | 250μs |
+
 #### 18.2.2 Flow Characteristics
 | **Stage** | **Time Budget** | **Validation** | **Recovery**|
 |:------:|:------:|:------:|:------:|
