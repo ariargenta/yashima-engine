@@ -827,16 +827,16 @@ graph TD
 | **Component Layer** | **Component** | **Primary Role** | **Critical Requirements** | **Performance Targets** |
 |:------:|:------:|:------:|:------:|:------:|
 | Control Layer | ML Controller | Resource optimization decisions | Deterministic response time | 100μs decision time |
-| ^ | Performance Monitor | System telemetry collection | Non-intrusive monitoring | 1ms sampling rate |
+| Control Layer | Performance Monitor | System telemetry collection | Non-intrusive monitoring | 1ms sampling rate |
 | Resource Management | Memory manager | Memory allocation and tracking | Deterministic allocation | <10μs allocation time |
-| ^ | State Manager | System state maintenance | Consistent state transitions | <50μs state update |
-| ^ | Queue Manager | Command queue handling | Priority-based scheduling | <5μs queue operation |
+| Resource Management | State Manager | System state maintenance | Consistent state transitions | <50μs state update |
+| Resource Management | Queue Manager | Command queue handling | Priority-based scheduling | <5μs queue operation |
 | Graphics Core | Resource Controller | Resource coordination | Thread-safe operation | <1ms resource sync |
-| ^ | Vulkan Pipeline | Graphics pipeline management | Frame time stability | 16ms frame budget |
-| ^ | Execution Engine | Command execution | Efficient scheduling | <100μs dispatch |
+| Graphics Core | Vulkan Pipeline | Graphics pipeline management | Frame time stability | 16ms frame budget |
+| Graphics Core | Execution Engine | Command execution | Efficient scheduling | <100μs dispatch |
 | Platform Layer | Driver Interface | API abstraction | Minimal overhead | <50μs call overhead |
-| ^ | Hardware Abstraction | Hardware capability management | Feature detection | Initialization only |
-| ^ | Device Management | Device control and monitoring | Error recovery | <1s recovery time |
+| Platform Layer | Hardware Abstraction | Hardware capability management | Feature detection | Initialization only |
+| Platform Layer | Device Management | Device control and monitoring | Error recovery | <1s recovery time |
 
 ### 18.2 System Flow
 #### 18.2.1 Data Pipeline
