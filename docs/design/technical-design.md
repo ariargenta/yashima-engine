@@ -827,7 +827,7 @@ graph TD
 | **Component Layer** | **Component** | **Primary Role** | **Critical Requirements** | **Performance Targets** |
 |:------:|:------:|:------:|:------:|:------:|
 | Control Layer | ML Controller | Resource optimization decisions | Deterministic response time | 100μs decision time |
-| Performance Monitor | System telemetry collection | Non-intrusive monitoring | <1% system overhead |
+| Control Layer | Performance Monitor | System telemetry collection | Non-intrusive monitoring | 1ms sampling rate |
 | Resource Management | Memory manager | Memory allocation and tracking | Deterministic allocation | <10μs allocation time |
 | State Manager | System state maintenance | Consistent state transitions | <50μs state update |
 | Queue Manager | Command queue handling | Priority-based scheduling | <5μs queue operation |
