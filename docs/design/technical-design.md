@@ -885,12 +885,20 @@ graph TD
 | Execution | Telemetry | System Data | Metrics | 250μs |
 
 #### 18.2.2 Flow Characteristics
-| **Stage** | **Time Budget** | **Validation** | **Recovery**|
-|:------:|:------:|:------:|:------:|
-| Input | 1ms | State validation | Retry |
-| Processing | 2ms | Command validation | Fallback |
-| Execution | 12ms | Result verification | Reset |
-| Output | 1ms | Consistency check | Skip frame |
+| **Processing Stage** | **Time Budget** | **Validation Requirements** | **Recovery Strategy**| **Critical Metrics** | **Warning Threshold** | **Critical Threshold** |
+|:------:|:------:|:------:|:------:|:------:|:------:|:------:|
+| Input Processing - State Collection | 1ms | Timestamp validation | Use cached state | Collection success rate | 90% success | 80% success |
+| Input Processing - Metrics Processing | 1ms | Range verification | Data validity rate | 95% valid | 90% valid | 
+| Input Processing - ML Analysis | 100μs | Decision validation | Use default values | Decision accuracy | 98% accuracy | 95% accuracy |
+| Resource Management - Decision Application | 50μs | Command validation | Skip non-critical | Command success rate | 99% success | 95% success |
+| Resource Management - Resource Allocation | 10μs | Memory bounds check | Use emergency pool | Allocation success rate | 99.9% success | 99% success |
+| Resource Management - State Update | 50μs | State consistency | Rollback changes | State consistency rate | 99.9% consistent | 99% consistent |
+| Graphics Pipeline - Command Generation | 2ms | Command validation | Reduce complexity | Generation success rate | 99% success | 95% success |
+| Graphics Pipeline - Resource Binding | 1ms | Binding verification | Default bindings | Binding success rate | 99.9% success | 99% success |
+| Graphics Pipeline - Command Submit | 500μs | Queue space check | Emergency flush | Submission rate | 99.9% success | 99% success |
+| Execution - GPU Processing | 8ms | Resource validation | Reduce quality | GPU utilization | 95% utilized | 98% utilized |
+| Execution - Presentation | 2ms | Vsync check | Present previous | Frame presentation rate | 59 FPS | 55 FPS |
+| Execution - Telemetry | 250μs | Data validation | Skip collection | Data collection rate | 95% collected | 90% collected
 
 #### 18.3.2 State Transitions
 ```mermaid
