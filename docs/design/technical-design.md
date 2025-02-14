@@ -824,13 +824,19 @@ graph TD
 ```
 
 #### 18.1.2 Component Responsibilities
-| **Component** | **Primary Role** | **Critical Requirements** |
-|:------:|:------:|:------:|
-| ML Control | Resource optimization | 100μs response time |
-| Resource Manager | Asset management | Deterministic allocation |
-| Graphics Core | Rendering pipeline | Frame time stability |
-| Platform Layer | Hardware abstraction | Minimal overhead |
-| Monitoring System | Performance tracking | Non-intrusive |
+| **Component Layer** | **Component** | **Primary Role** | **Critical Requirements** | **Performance Targets** |
+|:------:|:------:|:------:|:------:|:------:|
+| Control Layer | ML Controller | Resource optimization decisions | Deterministic response time | 100μs decision time |
+| Performance Monitor | System telemetry collection | Non-intrusive monitoring | <1% overhead |
+| Resource Management | Memory manager | Memory allocation and tracking | Deterministic allocation | <10μs allocation time |
+| State Manager | System state maintenance | Consistent state transitions | <50μs state update |
+| Queue Manager | Command queue handling | Priority-based scheduling | <5μs queue operation |
+| Graphics Core | Resource Controller | Resource coordination | Thread-safe operation | <1ms resource sync |
+| Vulkan Pipeline | Graphics pipeline management | Frame time stability | 16ms frame budget |
+| Execution Engine | Command execution | Efficient scheduling | <100μs dispatch |
+| Platform Layer | Driver Interface | API abstraction | Minimal overhead | <50μs call overhead |
+| Hardware Abstraction | Hardware capability management | Feature detection | Initialization only |
+| Device Management | Device control and monitoring | Error recovery | <1s recovery time |
 
 ### 18.2 System Flow
 #### 18.2.1 Data Pipeline
