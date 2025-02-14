@@ -932,6 +932,27 @@ graph TD
     end
 ```
 
+##### 18.3.2.1 State Transition Matrix
+| **Current State** | **Valid Transitions** | **Trigger Conditions** | **Required Validations** | **Recovery Actions** |
+|:------:|:------:|:------:|:------:|:------:|
+| Initialize | Boot | System startup | Resource availability | Retry/Fail |
+| Boot | Ready | Initialization complete | System checks passed | Restart |
+| Ready | Active, Error, Maintenance | Command queue ready, Error detected, Maintenance required | Resource validation | State reset |
+| Active | Ready, Throttled | Work complete, Resource pressure | Performance metrics | Graceful shutdown |
+| Throttled | Active, Ready | Resources available, Shutdown requested | Resource availability | Resource cleanup |
+| Error | Ready, Fatal, Recoverable | Error assessment | Error classification | Error handling |
+| Recoverable | Ready | Recovery complete | System stability | State restoration |
+| Fatal | Boot | System reset | Core functionality | Full restart |
+| Maintenance | Ready | Maintenance complete | System integrity | State verification |
+
+##### 18.3.2.2 Transition Requirements
+| **Transition Type** | **Maximum Time** | **Validation Steps** | **Rollback Strategy** |
+|:------:|:------:|:------:|:------:|
+| Normal Flow | 1ms | State consistency | Previous state |
+| Error Recovery | 100ms | Error resolution | Safe state |
+| Emergency | 10ms | Critical functions | Emergency shutdown |
+| Maintenance | 1s | Full validation | Staged rollback |
+
 ### 18.4 System Boundaries
 #### 18.4.1 Interface Boundaries
 | **Boundary** | **Type** | **Protocol** | **Validation** |
