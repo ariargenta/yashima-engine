@@ -902,12 +902,34 @@ graph TD
 
 #### 18.3.2 State Transitions
 ```mermaid
-graph LR
-    A[Initialize] --> B[Ready]
-    B --> C[Active]
-    C --> B
-    B --> D[Error]
-    D --> B
+graph TD
+    subgraph "System States"
+        I[Initialize] --> B[Boot]
+        B --> R[Ready]
+        R --> A[Active]
+        A --> R
+        
+        R --> E[Error]
+        E --> R
+        
+        subgraph "Error Handling"
+            E --> F[Fatal]
+            E --> RE[Recoverable]
+            RE --> R
+            F --> B
+        end
+        
+        subgraph "Resource States"
+            A --> T[Throttled]
+            T --> A
+            T --> R
+        end
+        
+        subgraph "Maintenance"
+            R --> M[Maintenance]
+            M --> R
+        end
+    end
 ```
 
 ### 18.4 System Boundaries
