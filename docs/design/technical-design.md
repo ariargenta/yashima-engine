@@ -791,12 +791,36 @@ graph TD
 #### 18.1.1 Core Components
 ```mermaid
 graph TD
-    A[ML Control System] --> B[Resource Manager]
-    B --> C[Graphics Core]
-    C --> D[Platform Layer]
-    E[Monitoring System] -.->|Feedback| A
-    E -.->|Feedback| B
-    E -.->|Feedback| C
+    subgraph "Control Layer"
+        ML[ML Controller] --> RM[Resource Manager]
+        P[Performance Monitor] -.->|Metrics| ML
+        P -.->|Usage| RM
+    end
+
+    subgraph "Resource Management"
+        RM --> MM[Memory Manager]
+        RM --> SM[State Manager]
+        RM --> QM[Queue Manager]
+        MM --> Pool[Resource Pools]
+        SM --> State[State Cache]
+        QM --> CMD[Command Queues]
+    end
+
+    subgraph "Graphics Core"
+        Pool --> RC[Resource Controller]
+        State --> RC
+        CMD --> RC
+        RC --> VP[Vulkan Pipeline]
+        RC --> Sync[Synchronization]
+        VP --> Exec[Execution Engine]
+        Sync --> Exec
+    end
+
+    subgraph "Platform Layer"
+        Exec --> Driver[Driver Interface]
+        Driver --> HW[Hardware Abstraction]
+        HW --> Dev[Device Management]
+    end
 ```
 
 #### 18.1.2 Component Responsibilities
