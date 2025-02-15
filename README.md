@@ -19,9 +19,9 @@ Learn graphics programming by building a production-grade engine.
 
 ## Why this exists?
 Most graphics programming resources either:
-- Teach basics without production context
-- Show production code without explaining why
-- Skip the journey from prototype to production
+- ⁉️ Teach basics without production context
+- 🚀 Show production code without explaining why
+- 🏗️ Skip the journey from prototype to production
 
 ### What we're building?
 A graphics engine that shows:
