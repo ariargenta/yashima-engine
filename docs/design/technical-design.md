@@ -955,7 +955,7 @@ graph TD
 
 ### 18.4 System Boundaries
 #### 18.4.1 Interface Boundaries
-| **Boundary** | **Type** | **Protocol** | **Validation** |
+| **Boundary Type** | **Interface Level** | **Protocol** | **Validation** |
 |:------:|:------:|:------:|:------:|
 | External API | Public | Documented API | Full |
 | Componet | Internal | Message passing | Partial |

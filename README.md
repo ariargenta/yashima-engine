@@ -6,7 +6,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badges/)
 
-An educational rendering engine focused on accessibility and learning.
+Learn graphics programming by building a production-grade engine.
 
 [Getting Started](#getting-started) •
 [Documentation](#documentation) •
@@ -17,18 +17,28 @@ An educational rendering engine focused on accessibility and learning.
 
 ---
 
-## 🎯 Project Vision
-Yashima Engine is an educational rendering engine designed to bridge the gap between graphics programming theory and practice. Our focus is on providing a clear, well-documented learning path for graphics programming enthusiasts.
+## Why this exists?
+Most graphics programming resources either:
+- Teach basics without production context
+- Show production code without explaining why
+- Skip the journey from prototype to production
 
-### Key Features
-- 📚 Educational-first approach
-- 🔍 Transparent rendering pipeline
-- 📊 Built-in performance analysis tools
-- 📖 Comprehensive documentation
-- 🎓 Interactive learning tools
+### What we're building?
+A graphics engine that shows:
+- How to start simple and scale up
+- Real production decisions as they happen
+- Why we choose certain approaches over others
 
-## 🚧 Project Status
-This project is in initial development. Current phase: Architecture Design
+## Who it is for?
+- Anyone switching from tutorials into real projects
+- Fresh developers wanting production experience
+- Students ready for real-world practices
+
+## How it works?
+1. Start with working prototypes
+2. Improve through real-world patterns
+3. Document decisions as we make them
+4. Show performance impacts
 
 ### Hardware Requirements
 #### Minimum (Educational Focus)
@@ -42,30 +52,6 @@ This project is in initial development. Current phase: Architecture Design
 - GPU: GTX 1650 / RX 580 / Intel Arc A380
 - RAM: 16GB System Memory
 - API: Vulkan 1.3
-
-## 🚀 Getting Started
-[Coming Soon]
-
-## 📖 Documentation
-Our documentation is structured to support both learning and development:
-
-### Core Documentation
-- [Vision and Scope](docs/design/vision-and-scope.md)
-- [Architecture Overview](docs/architecture/README.md)
-- [Development Setup](docs/setup/development-environment.md)
-
-### Educational Resources
-- [Graphics Pipeline Fundamentals](docs/educational/pipeline-basics.md)
-- [Performance Optimization Guide](docs/educational/optimization.md)
-- [Resource Management](docs/educational/resource-management.md)
-
-### API Documentation
-- [Core API Reference](docs/api/README.md)
-- [Rendering Pipeline API](docs/api/rendering.md)
-- [Resource Management API](docs/api/resources.md)
-
-## 🤝 Contributing
-We welcome contributions from developers of all skill levels! See our [Contributing Guide](CONTRIBUTING.md) for details.
 
 ### Development Prerequisites
 - Visual Studio 2019+
