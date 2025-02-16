@@ -8,31 +8,26 @@
 
 Learn graphics programming by building a production-grade engine.
 
-[Getting Started](#getting-started) •
-[Documentation](#documentation) •
-[Contributing](#contributing) •
-[Educational Resources](#educational-resources)
-
 </div>
 
----
+--------------------------------------------------------------------------------
 
 ## Why this exists?
 Most graphics programming resources either:
 - ⁉️ Teach basics without production context
-- 🚀 Show production code without explaining why
+- 📈 Show production code without explaining why
 - 🏗️ Skip the journey from prototype to production
 
 ### What we're building?
 A graphics engine that shows:
-- How to start simple and scale up
-- Real production decisions as they happen
-- Why we choose certain approaches over others
+- 🚀 How to start simple and scale up
+- 📊 Real production decisions as they happen
+- 💡 Why we choose certain approaches over others
 
 ## Who it is for?
-- Anyone switching from tutorials into real projects
-- Fresh developers wanting production experience
-- Students ready for real-world practices
+- 🔧 Anyone switching from tutorials into real projects
+- 💻 Fresh developers wanting production experience
+- 📚 Students ready for real-world practices
 
 ## How it works?
 1. Start with working prototypes
