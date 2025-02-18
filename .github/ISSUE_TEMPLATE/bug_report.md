@@ -22,4 +22,4 @@ labels: 'bug'
 - Driver Version: [e.g. 497.29]
 
 ## Additional Context
-[Add any other context about the problem here]
+[Any other context about the problem]
