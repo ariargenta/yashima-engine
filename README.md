@@ -18,7 +18,7 @@ Most graphics programming resources either:
 - 📈 Show production code without explaining why
 - 🏗️ Skip the journey from prototype to production
 
-### What we're building?
+## What we're building?
 A graphics engine that shows:
 - 🚀 How to start simple and scale up
 - 📊 Real production decisions as they happen
@@ -35,26 +35,26 @@ A graphics engine that shows:
 3. Document decisions as we make them
 4. Show performance impacts
 
-### Hardware Requirements
-#### Minimum (Educational Focus)
+## Hardware Requirements
+### Minimum (Educational Focus)
 - CPU: Intel i3 8th Gen / AMD Ryzen 3 2200G
 - GPU: Intel UHD 620 or equivalent integrated graphics
 - RAM: 8GB System Memory
 - API: Vulkan 1.2
 
-#### Recommended
+### Recommended
 - CPU: Intel i5 10th Gen / Ryzen 5 3600
 - GPU: GTX 1650 / RX 580 / Intel Arc A380
 - RAM: 16GB System Memory
 - API: Vulkan 1.3
 
-### Development Prerequisites
+## Development Prerequisites
 - Visual Studio 2019+
 - Vulkan SDK 1.2+
 - CMake 3.20+
 - Python 3.8+
 
-### Getting the Source
+### Getting started
 ```bash
 git clone https://github.com/ariargenta/yashima-engine.git
 cd yashima-engine
