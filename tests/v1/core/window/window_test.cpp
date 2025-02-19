@@ -1,6 +1,6 @@
 // [Standard:v1]
-#include<gtest/gtest.h>
-#include"core/window/window.h"
+#include <gtest/gtest.h>
+#include "src/v1/core/window/window.h"
 
 namespace yashima::v1::test {
 
@@ -11,20 +11,21 @@ namespace yashima::v1::test {
     };
 
     TEST_F(WindowTest, ShouldCreateWindowWithDefaultProperties) {
-        EXPECT_NO_TRHOW( {
+
+        EXPECT_NO_THROW({
             Window window;
         });
     }
 
     TEST_F(WindowTest, ShouldCreateWindowWithCustomProperties) {
 
-        Window::Properties props {
+        Window::Properties props{
             .width = 1024,
             .height = 768,
             .title = "Test Window"
         };
 
-        EXPECT_NO_THROW( {
+        EXPECT_NO_THROW({
             Window window{props};
         });
     }
@@ -37,7 +38,7 @@ namespace yashima::v1::test {
     TEST_F(WindowTest, ShouldHandleEvents) {
         Window window;
 
-        EXPECT_NO_THROW( {
+        EXPECT_NO_THROW({
             window.pollEvents();
         });
     }
@@ -57,4 +58,4 @@ namespace yashima::v1::test {
         // Verify move assignment exists
         EXPECT_TRUE(std::is_move_assignable_v<Window>);
     }
-}
+}  // namespace yashima::v1::test

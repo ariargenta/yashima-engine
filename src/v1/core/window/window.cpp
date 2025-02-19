@@ -1,6 +1,6 @@
 // [Standard:v1]
-#include "window.h"
 #include <GLFW/glfw3.h>
+#include "window.h"
 
 namespace yashima::v1 {
     
