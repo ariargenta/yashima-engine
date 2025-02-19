@@ -7,7 +7,7 @@ namespace yashima::v1 {
             struct Properties {
                 int width(800);
                 int height(600);
-                const char* title{ "Yashima Engine" };
+                const char* title{"Yashima Engine"};
             };
 
             Window() = default;
@@ -16,7 +16,11 @@ namespace yashima::v1 {
 
             // Prevent copying
             Window(const Window&) = delete;
-            Window& operator = (Window&&) noexept = default;
+            Window& operator = (const Window&) = delete;
+
+            // Allow moving
+            Window(Window&&) noexcept = default;
+            Window& operator = (Window&&) noexcept = default;
 
             bool shoudClose() const;
             void pollEvents();
