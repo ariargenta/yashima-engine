@@ -5,7 +5,6 @@
 int main(int argc, char* argv[]) {
     
     try {
-
         yashima::v1::Window::Properties props{
             .width = 800,
             .height = 600,

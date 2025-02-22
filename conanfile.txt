@@ -1,0 +1,13 @@
+[requires]
+glfw/3.4
+gtest/1.15.0
+
+[generators]
+CMakeDeps
+CMakeToolchain
+
+[layout]
+cmake_layout
+
+[options]
+*:shared=False

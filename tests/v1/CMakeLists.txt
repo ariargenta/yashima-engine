@@ -1,5 +1,5 @@
 add_executable(window_tests
-    window_test.cpp
+    core/window/window_test.cpp
 )
 
 target_link_libraries(window_tests
