@@ -1,19 +1,17 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(yashima VERSION 0.1.0 LANGUAGES CXX)
-
-set(CMAKE_PREFIX_PATH ${CMAKE_CURRENT_SOURCE_DIR}/build/generators ${CMAKE_PREFIX_PATH})
-
-find_package(glfw3 CONFIG REQUIRED)
-find_package(GTest REQUIRED)
+project(YashimaEngine
+    VERSION 0.1.0
+    DESCRIPTION "An educational graphics engine focusing on x86_64 optimization"
+    LANGUAGES CXX
+)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-add_subdirectory(src/v1)
+option(YASHIMA_BUILD_EXAMPLES "Build example applications" OFF)
+option(YASHIMA_BUILD_TESTS "Build test suite" OFF)
 
-if(BUILD_TESTING)
-    enable_testing()
-    add_subdirectory(tests/v1)
-endif()
+message(STATUS "Compiler: ${CMAKE_CXX_COMPILER_ID}")
+message(STATUS "Compiler version: ${CMAKE_CXX_COMPILER_VERSION}")

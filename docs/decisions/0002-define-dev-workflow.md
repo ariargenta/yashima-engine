@@ -22,23 +22,23 @@ Current challenges:
 Implement a structured development workflow:
 
 1. Branch Strategy
-   - main: Production-ready code
-   - development: Integration branch
-   - feature/*: Feature development
-   - bugfix/*: Bug fixes
+    - main: Production-ready code
+    - development: Integration branch
+    - feature/*: Feature development
+    - bugfix/*: Bug fixes
 
 2. Process Flow
-   - Issue creation (bug/feature)
-   - Branch creation
-   - Development + testing
-   - PR submission
-   - Review + iteration
-   - Merge
+    - Issue creation (bug/feature)
+    - Branch creation
+    - Development + testing
+    - PR submission
+    - Review + iteration
+    - Merge
 
 3. Templates and Standards
-   - Standardized PR template
-   - Issue templates
-   - Commit message format
+    - Standardized PR template
+    - Issue templates
+    - Commit message format
 
 ## Consequences
 
